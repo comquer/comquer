@@ -1,0 +1,16 @@
+{
+    "name": "jakubgiminski/command-query-event",
+    "type": "library",
+    "require": {
+        "jakubgiminski/collection": "^1.2"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.0"
+    },
+    "authors": [
+        {
+            "name": "Jakub Giminski",
+            "email": "jakubgiminski@gmail.com"
+        }
+    ]
+}
