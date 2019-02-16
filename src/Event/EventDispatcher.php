@@ -2,7 +2,7 @@
 
 namespace CQRS\Event;
 
-use CQRS\Queue;
+use CQRS\Queue\Queue;
 
 class EventDispatcher
 {

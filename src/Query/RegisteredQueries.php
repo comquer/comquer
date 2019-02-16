@@ -2,7 +2,7 @@
 
 namespace CQRS\Query;
 
-use CQRS\BusConfig;
+use CQRS\Bus\BusConfig;
 
 class RegisteredQueries extends BusConfig
 {

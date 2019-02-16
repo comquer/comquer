@@ -2,8 +2,8 @@
 
 namespace CQRS\Event;
 
-use CQRS\Queue;
-use CQRS\QueueConsumer;
+use CQRS\Queue\Queue;
+use CQRS\Queue\QueueConsumer;
 
 class EventQueueConsumer implements QueueConsumer
 {
