@@ -2,7 +2,6 @@
 
 namespace CQRS\Query;
 
-use CQRS\BusConfig\BusException;
 use CQRS\HandlerProvider;
 
 class QueryBus
@@ -19,9 +18,7 @@ class QueryBus
 
     public function handle($query)
     {
-        if ($this->registeredQueries->contains($query) === false) {
-            throw BusException::classNotRegistered(get_class($query));
-        }
+        $this->registeredQueries->mustContain($query);
 
         $handler = $this->handlerProvider->get(
             $this->registeredQueries->getHandlerClassName($query)
