@@ -18,9 +18,7 @@ class EventDispatcher
 
     public function dispatch($event)
     {
-        if ($this->registeredEvents->contains($event) === false) {
-            //
-        }
+        $this->registeredEvents->mustContain($event);
 
         return $this->queue->push($event);
     }

@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace CQRS\Bus;
+namespace CQRS\BusConfig;
 
-class BusException extends \RuntimeException
+class BusConfigException extends \RuntimeException
 {
     public static function classNotRegistered(string $className): self
     {

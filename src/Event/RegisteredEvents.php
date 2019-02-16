@@ -2,7 +2,7 @@
 
 namespace CQRS\Event;
 
-use CQRS\Bus\BusConfig;
+use CQRS\BusConfig\BusConfig;
 
 class RegisteredEvents extends BusConfig
 {

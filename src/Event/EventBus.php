@@ -2,7 +2,6 @@
 
 namespace CQRS\Event;
 
-use CQRS\Bus\BusException;
 use CQRS\HandlerProvider;
 
 class EventBus
@@ -19,9 +18,7 @@ class EventBus
 
     public function handle($event)
     {
-        if ($this->registeredEvents->contains($event) === false) {
-            throw BusException::classNotRegistered(get_class($event));
-        }
+        $this->registeredEvents->mustContain($event);
 
         $handler = $this->handlerProvider->get(
             $this->registeredEvents->getHandlerClassName($event)

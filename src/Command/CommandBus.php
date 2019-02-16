@@ -2,7 +2,6 @@
 
 namespace CQRS\Command;
 
-use CQRS\Bus\BusException;
 use CQRS\HandlerProvider;
 
 class CommandBus
@@ -19,9 +18,7 @@ class CommandBus
 
     public function handle($command)
     {
-        if ($this->registeredCommands->contains($command) === false) {
-            throw BusException::classNotRegistered(get_class($command));
-        }
+        $this->registeredCommands->mustContain($command);
 
         $handler = $this->handlerProvider->get(
             $this->registeredCommands->getHandlerClassName($command)

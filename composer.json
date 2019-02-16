@@ -1,5 +1,6 @@
 {
     "name": "jakubgiminski/cqrs",
+    "version": "dev-master",
     "type": "library",
     "require": {
         "jakubgiminski/collection": "^1.2"

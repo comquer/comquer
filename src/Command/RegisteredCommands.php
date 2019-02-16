@@ -2,7 +2,7 @@
 
 namespace CQRS\Command;
 
-use CQRS\Bus\BusConfig;
+use CQRS\BusConfig\BusConfig;
 
 class RegisteredCommands extends BusConfig
 {

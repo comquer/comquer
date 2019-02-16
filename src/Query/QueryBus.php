@@ -2,7 +2,7 @@
 
 namespace CQRS\Query;
 
-use CQRS\Bus\BusException;
+use CQRS\BusConfig\BusException;
 use CQRS\HandlerProvider;
 
 class QueryBus

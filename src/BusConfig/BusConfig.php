@@ -1,8 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace CQRS\Bus;
+namespace CQRS\BusConfig;
 
 use Collection\Collection;
+use Collection\NotFoundException;
 use Collection\Type;
 use Collection\UniqueIndex;
 
@@ -35,5 +36,14 @@ class BusConfig extends Collection
     public function getHandlerClassName($object): string
     {
         return $this->get(get_class($object))->getValue();
+    }
+
+    public function mustContain($object): void
+    {
+        try {
+            $this->getHandlerClassName($object);
+        } catch (NotFoundException $exception) {
+            throw BusConfigException::classNotRegistered(get_class($object));
+        }
     }
 }
