@@ -4,16 +4,36 @@ namespace CQRS\Bus;
 
 use Collection\Collection;
 use Collection\Type;
+use Collection\UniqueIndex;
 
 class BusConfig extends Collection
 {
-    public static function fromArray(array $config): self
+    public function __construct(array $elements = [])
     {
-        return new self([], Type::integer()); // @todo: kill the dummy
+        parent::__construct(
+            $elements,
+            Type::object(ConfigElement::class),
+            new UniqueIndex(function(ConfigElement $configElement) {
+               return $configElement->getKey();
+            })
+        );
     }
 
-    public function getHandlerClassName($element): string
+    public static function fromArray(array $configArray): self
     {
-        return 'handler class name'; // @todo: kill the dummy
+        $config = new self();
+
+        foreach ($configArray as $key => $value) {
+            $config->add(
+                new ConfigElement($key, $value)
+            );
+        }
+
+        return $config;
+    }
+
+    public function getHandlerClassName($key): string
+    {
+        return $this->get($key)->getValue();
     }
 }
