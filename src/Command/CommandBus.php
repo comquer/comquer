@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace CommandQueryEvent\Command;
+namespace CQRS\Command;
 
-use CommandQueryEvent\HandlerProvider;
+use CQRS\HandlerProvider;
 
 class CommandBus
 {

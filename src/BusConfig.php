@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace CommandQueryEvent;
+namespace CQRS;
 
 use Collection\Collection;
 use Collection\Type;

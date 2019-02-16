@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace CommandQueryEvent\Event;
+namespace CQRS\Event;
 
-use CommandQueryEvent\Queue;
-use CommandQueryEvent\QueueConsumer;
+use CQRS\Queue;
+use CQRS\QueueConsumer;
 
 class EventQueueConsumer implements QueueConsumer
 {
