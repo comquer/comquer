@@ -32,8 +32,8 @@ class BusConfig extends Collection
         return $config;
     }
 
-    public function getHandlerClassName($key): string
+    public function getHandlerClassName($object): string
     {
-        return $this->get($key)->getValue();
+        return $this->get(get_class($object))->getValue();
     }
 }

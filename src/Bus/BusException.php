@@ -4,8 +4,8 @@ namespace CQRS\Bus;
 
 class BusException extends \RuntimeException
 {
-    public static function classNotRegistered(string $commandClassName): self
+    public static function classNotRegistered(string $className): self
     {
-        return new self("Class $commandClassName is not registered!");
+        return new self("Class $className is not registered!");
     }
 }
