@@ -16,7 +16,7 @@ class CommandBus
         $this->handlerProvider = $handlerProvider;
     }
 
-    public function handle($command): void
+    public function handle($command)
     {
         if ($this->registeredCommands->contains($command) === false) {
             //
@@ -26,6 +26,6 @@ class CommandBus
             $this->registeredCommands->getHandlerClassName($command)
         );
 
-        $handler->handle($command);
+        return $handler->handle($command);
     }
 }
