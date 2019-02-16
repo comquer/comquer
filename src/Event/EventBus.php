@@ -19,7 +19,7 @@ class EventBus
     public function handle($event)
     {
         if ($this->registeredEvents->contains($event) === false) {
-            //
+            throw BusException::classNotRegistered(get_class($event));
         }
 
         $handler = $this->handlerProvider->get(

@@ -4,5 +4,5 @@ namespace CQRS;
 
 interface QueueConsumer
 {
-    public function consumeQueue(Queue $queue);
+    public function consume(Queue $queue);
 }

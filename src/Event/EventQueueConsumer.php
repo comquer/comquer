@@ -14,7 +14,7 @@ class EventQueueConsumer implements QueueConsumer
         $this->eventBus = $eventBus;
     }
 
-    public function consumeQueue(Queue $queue)
+    public function consume(Queue $queue)
     {
         while ($queue->isEmpty() === false) {
             $this->eventBus->handle(
