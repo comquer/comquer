@@ -22,7 +22,7 @@ class BusConfig extends Collection
 
     public static function fromArray(array $configArray): self
     {
-        $config = new self();
+        $config = new static();
 
         foreach ($configArray as $key => $value) {
             $config->add(

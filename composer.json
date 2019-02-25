@@ -1,10 +1,8 @@
 {
     "name": "jakubgiminski/cqrs",
+    "description": "CQRS helpers",
     "version": "dev-master",
     "type": "library",
-    "require": {
-        "jakubgiminski/collection": "^1.2"
-    },
     "require-dev": {
         "phpunit/phpunit": "^8.0"
     },
@@ -13,5 +11,18 @@
             "name": "Jakub Giminski",
             "email": "jakubgiminski@gmail.com"
         }
-    ]
+    ],
+    "autoload": {
+        "psr-4": {
+            "CQRS\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "CQRSTest\\": "test/"
+        }
+    },
+    "require": {
+        "jakubgiminski/collection": "^1.2"
+    }
 }
