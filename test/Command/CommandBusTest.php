@@ -9,7 +9,7 @@ use CQRSTest\Fixture\Command\DoSomething\DoSomething;
 use CQRSTest\Fixture\Command\DoSomething\DoSomethingHandler;
 use PHPUnit\Framework\TestCase;
 
-class CommandBusConfigTest extends TestCase
+class CommandBusTest extends TestCase
 {
     /** @test */
     function instantiate()
