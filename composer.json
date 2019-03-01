@@ -1,6 +1,6 @@
 {
-    "name": "jakubgiminski/cqrs",
-    "description": "CQRS helpers",
+    "name": "gigabyte-software/cqrs",
+    "description": "CQRS framework",
     "version": "dev-master",
     "type": "library",
     "require-dev": {
