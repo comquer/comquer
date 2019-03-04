@@ -2,7 +2,6 @@
 
 namespace CQRSTest\Command;
 
-use CQRS\BusException;
 use CQRS\Command\CommandBus;
 use CQRS\Command\RegisteredCommands;
 use CQRS\HandlerProvider;
