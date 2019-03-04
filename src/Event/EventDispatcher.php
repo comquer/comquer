@@ -8,18 +8,21 @@ class EventDispatcher
 {
     private $registeredEvents;
 
+    private $eventRepository;
+
     private $queue;
 
-    public function __construct(RegisteredEvents $registeredEvents, Queue $queue)
+    public function __construct(RegisteredEvents $registeredEvents, EventRepository $eventRepository, Queue $queue)
     {
         $this->registeredEvents = $registeredEvents;
+        $this->eventRepository = $eventRepository;
         $this->queue = $queue;
     }
 
-    public function dispatch($event)
+    public function dispatch($event): void
     {
         $this->registeredEvents->mustContain($event);
-
-        return $this->queue->push($event);
+        $this->eventRepository->persist($event);
+        $this->queue->push($event);
     }
 }
