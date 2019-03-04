@@ -3,6 +3,7 @@
 namespace CQRS\Event;
 
 use CQRS\HandlerProvider;
+use Exception;
 
 class EventBus
 {
@@ -24,6 +25,10 @@ class EventBus
             $this->registeredEvents->getHandlerClassName($event)
         );
 
-        return $handler->handle($event);
+        try {
+            return $handler->handle($event);
+        } catch (Exception $exception) {
+            throw BusException::handlingFailed(get_class($event), $exception);
+        }
     }
 }

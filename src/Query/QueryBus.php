@@ -3,6 +3,7 @@
 namespace CQRS\Query;
 
 use CQRS\HandlerProvider;
+use Exception;
 
 class QueryBus
 {
@@ -24,6 +25,10 @@ class QueryBus
             $this->registeredQueries->getHandlerClassName($query)
         );
 
-        return $handler->handle($query);
+        try {
+            return $handler->handle($query);
+        } catch (Exception $exception) {
+            throw BusException::handlingFailed(get_class($query), $exception);
+        }
     }
 }
