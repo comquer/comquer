@@ -7,7 +7,6 @@ use CQRS\Command\RegisteredCommands;
 use CQRS\HandlerProvider;
 use CQRSTest\Fixture\Command\DoSomething\DoSomething;
 use CQRSTest\Fixture\Command\DoSomething\DoSomethingHandler;
-use CQRSTest\Fixture\Command\DoSomething\FailingDoSomethingHandler;
 use PHPUnit\Framework\TestCase;
 
 class CommandBusTest extends TestCase
