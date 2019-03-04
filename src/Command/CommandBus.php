@@ -2,7 +2,9 @@
 
 namespace CQRS\Command;
 
+use CQRS\BusException;
 use CQRS\HandlerProvider;
+use Exception;
 
 class CommandBus
 {
@@ -24,6 +26,10 @@ class CommandBus
             $this->registeredCommands->getHandlerClassName($command)
         );
 
-        return $handler->handle($command);
+        try {
+            return $handler->handle($command);
+        } catch (Exception $exception) {
+            throw BusException::handlingFailed(get_class($command), $exception);
+        }
     }
 }
