@@ -4,9 +4,9 @@ namespace CQRS\Queue;
 
 interface Queue
 {
-    public function queueForHandling($element);
+    public function push($element);
 
-    public function pullNextInLine();
+    public function pullNext();
 
     public function isEmpty(): bool;
 }
