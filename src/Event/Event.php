@@ -10,6 +10,8 @@ abstract class Event implements SerializableEvent, DeserializableEvent
 {
     private $occurredOn;
 
+    abstract public static function getName(): string;
+
     public function __construct(DateTimeImmutable $occurredOn = null)
     {
         $this->occurredOn = $occurredOn ?: new DateTimeImmutable();
@@ -20,5 +22,8 @@ abstract class Event implements SerializableEvent, DeserializableEvent
         return $this->occurredOn;
     }
 
-    abstract public function __toString(): string;
+    public function __toString(): string
+    {
+        return $this::getName();
+    }
 }
