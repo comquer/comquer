@@ -6,7 +6,7 @@ interface Queue
 {
     public function push($element);
 
-    public function getNext();
+    public function pullNext();
 
     public function isEmpty(): bool;
 }
