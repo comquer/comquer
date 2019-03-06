@@ -20,4 +20,6 @@ abstract class Event implements SerializableEvent, DeserializableEvent
     {
         return $this->occurredOn;
     }
+
+    abstract public function __toString(): string;
 }
