@@ -4,7 +4,6 @@ namespace CQRS\Event\Store;
 
 class EventStoreId
 {
-    /** @var string */
     private $value;
 
     public function __construct(string $value)

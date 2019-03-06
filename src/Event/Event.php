@@ -8,7 +8,6 @@ use DateTimeImmutable;
 
 abstract class Event implements SerializableEvent, DeserializableEvent
 {
-    /** @var DateTimeImmutable */
     private $occurredOn;
 
     public function __construct(DateTimeImmutable $occurredOn = null)
