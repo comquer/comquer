@@ -1,7 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace CQRS\Event;
+namespace CQRS\Event\Queue;
 
+use CQRS\Event\Bus\EventBus;
 use CQRS\Queue\Queue;
 use CQRS\Queue\QueueConsumer;
 
@@ -18,7 +19,7 @@ class EventQueueConsumer implements QueueConsumer
     {
         while ($queue->isEmpty() === false) {
             $this->eventBus->handle(
-                $queue->getNext()
+                $queue->pullNextInLine()
             );
         }
     }

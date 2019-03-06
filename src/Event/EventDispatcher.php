@@ -4,5 +4,5 @@ namespace CQRS\Event;
 
 interface EventDispatcher
 {
-    public function dispatch($event): void;
+    public function dispatch(Event $event): void;
 }
