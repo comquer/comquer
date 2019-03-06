@@ -2,6 +2,7 @@
 
 namespace CQRS\Event;
 
+use CQRS\BusException;
 use CQRS\HandlerProvider;
 use Exception;
 
