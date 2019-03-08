@@ -2,13 +2,13 @@
 
 namespace CQRS\Event\Queue;
 
-use CQRS\Event\Store\EventStoreId;
+use CQRS\Event\Store\EventId;
 
 interface EventQueue
 {
-    public function push(EventStoreId $eventId ): void;
+    public function push(EventId $eventId ): void;
 
-    public function pullNext(): EventStoreId;
+    public function pullNext(): EventId;
 
     public function isEmpty(): bool;
 }

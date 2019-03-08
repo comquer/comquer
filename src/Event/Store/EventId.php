@@ -2,7 +2,7 @@
 
 namespace CQRS\Event\Store;
 
-class EventStoreId
+class EventId
 {
     private $value;
 
