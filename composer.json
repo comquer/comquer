@@ -2,6 +2,7 @@
     "name": "comquer/comquer",
     "description": "CQRS and Event Sourcing Framework",
     "version": "dev-master",
+    "minimum-stability": "dev",
     "type": "library",
     "require-dev": {
         "phpunit/phpunit": "^8.0"
