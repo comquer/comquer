@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace CQRS;
+namespace Comquer;
 
 use Exception;
 use RuntimeException;

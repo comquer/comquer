@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace CQRS\Query;
+namespace Comquer\Query;
 
-use CQRS\BusConfig\BusConfig;
+use Comquer\BusConfig\BusConfig;
 
 class RegisteredQueries extends BusConfig
 {

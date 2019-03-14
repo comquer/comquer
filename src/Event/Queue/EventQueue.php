@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace CQRS\Event\Queue;
+namespace Comquer\Event\Queue;
 
-use CQRS\Event\Store\EventId;
+use Comquer\Event\Store\EventId;
 
 interface EventQueue
 {

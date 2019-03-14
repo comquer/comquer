@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace CQRS\Event\Bus;
+namespace Comquer\Event\Bus;
 
-use CQRS\BusConfig\BusConfig;
+use Comquer\BusConfig\BusConfig;
 
 class RegisteredEvents extends BusConfig
 {

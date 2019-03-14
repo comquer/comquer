@@ -1,6 +1,6 @@
 {
-    "name": "jakubgiminski/cqrs",
-    "description": "CQRS framework",
+    "name": "comquer/comquer",
+    "description": "CQRS and Event Sourcing Framework",
     "version": "dev-master",
     "type": "library",
     "require-dev": {
@@ -14,12 +14,12 @@
     ],
     "autoload": {
         "psr-4": {
-            "CQRS\\": "src/"
+            "Comquer\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "CQRSTest\\": "test/"
+            "ComquerTest\\": "test/"
         }
     },
     "require": {

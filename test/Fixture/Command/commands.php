@@ -1,6 +1,6 @@
 <?php
 
 return [
-    \CQRSTest\Fixture\Command\DoSomething\DoSomething::class => \CQRSTest\Fixture\Command\DoSomething\DoSomethingHandler::class,
-    \CQRSTest\Fixture\Command\DoSomethingElse\DoSomethingElse::class => \CQRSTest\Fixture\Command\DoSomethingElse\DoSomethingElseHandler::class,
+    \ComquerTest\Fixture\Command\DoSomething\DoSomething::class => \ComquerTest\Fixture\Command\DoSomething\DoSomethingHandler::class,
+    \ComquerTest\Fixture\Command\DoSomethingElse\DoSomethingElse::class => \ComquerTest\Fixture\Command\DoSomethingElse\DoSomethingElseHandler::class,
 ];

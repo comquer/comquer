@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace CQRS\Command;
+namespace Comquer\Command;
 
-use CQRS\BusException;
-use CQRS\HandlerProvider;
+use Comquer\BusException;
+use Comquer\HandlerProvider;
 use Exception;
 
 class CommandBus

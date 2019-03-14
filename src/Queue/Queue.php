@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace CQRS\Queue;
+namespace Comquer\Queue;
 
 interface Queue
 {

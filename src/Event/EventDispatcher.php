@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace CQRS\Event;
+namespace Comquer\Event;
 
 interface EventDispatcher
 {

@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace CQRS\BusConfig;
+namespace Comquer\BusConfig;
 
 use Collection\Collection;
 use Collection\NotFoundException;

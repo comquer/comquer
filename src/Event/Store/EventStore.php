@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace CQRS\Event\Store;
+namespace Comquer\Event\Store;
 
-use CQRS\Event\Event;
+use Comquer\Event\Event;
 
 interface EventStore
 {

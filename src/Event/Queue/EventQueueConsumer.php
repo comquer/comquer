@@ -1,12 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace CQRS\Event\Queue;
+namespace Comquer\Event\Queue;
 
-use CQRS\BusException;
-use CQRS\Event\Bus\EventBus;
-use CQRS\Event\Store\EventStore;
-use CQRS\Queue\Queue;
-use CQRS\Queue\QueueConsumer;
+use Comquer\BusException;
+use Comquer\Event\Bus\EventBus;
+use Comquer\Event\Store\EventStore;
+use Comquer\Queue\Queue;
+use Comquer\Queue\QueueConsumer;
 
 class EventQueueConsumer implements QueueConsumer
 {

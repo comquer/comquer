@@ -1,12 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace CQRSTest\Command;
+namespace ComquerTest\Command;
 
-use CQRS\Command\CommandBus;
-use CQRS\Command\RegisteredCommands;
-use CQRS\HandlerProvider;
-use CQRSTest\Fixture\Command\DoSomething\DoSomething;
-use CQRSTest\Fixture\Command\DoSomething\DoSomethingHandler;
+use Comquer\Command\CommandBus;
+use Comquer\Command\RegisteredCommands;
+use Comquer\HandlerProvider;
+use ComquerTest\Fixture\Command\DoSomething\DoSomething;
+use ComquerTest\Fixture\Command\DoSomething\DoSomethingHandler;
 use PHPUnit\Framework\TestCase;
 
 class CommandBusTest extends TestCase

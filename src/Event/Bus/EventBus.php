@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace CQRS\Event\Bus;
+namespace Comquer\Event\Bus;
 
-use CQRS\BusException;
-use CQRS\HandlerProvider;
+use Comquer\BusException;
+use Comquer\HandlerProvider;
 use Exception;
 
 class EventBus

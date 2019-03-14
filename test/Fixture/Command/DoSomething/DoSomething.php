@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace CQRSTest\Fixture\Command\DoSomething;
+namespace ComquerTest\Fixture\Command\DoSomething;
 
 class DoSomething
 {

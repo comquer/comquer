@@ -1,12 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace CQRSTest\BusConfig;
+namespace ComquerTest\BusConfig;
 
-use CQRS\BusConfig\BusConfigException;
-use CQRS\Command\RegisteredCommands;
-use CQRSTest\Fixture\Command\DoSomething\DoSomething;
-use CQRSTest\Fixture\Command\DoSomething\DoSomethingHandler;
-use CQRSTest\Fixture\Command\DoSomethingElse\DoSomethingElse;
+use Comquer\BusConfig\BusConfigException;
+use Comquer\Command\RegisteredCommands;
+use ComquerTest\Fixture\Command\DoSomething\DoSomething;
+use ComquerTest\Fixture\Command\DoSomething\DoSomethingHandler;
+use ComquerTest\Fixture\Command\DoSomethingElse\DoSomethingElse;
 use PHPUnit\Framework\TestCase;
 
 class BusConfigTest extends TestCase

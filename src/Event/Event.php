@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace CQRS\Event;
+namespace Comquer\Event;
 
-use CQRS\Event\Store\DeserializableEvent;
-use CQRS\Event\Store\SerializableEvent;
+use Comquer\Event\Store\DeserializableEvent;
+use Comquer\Event\Store\SerializableEvent;
 use DateTimeImmutable;
 
 abstract class Event implements SerializableEvent, DeserializableEvent

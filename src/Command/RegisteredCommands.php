@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace CQRS\Command;
+namespace Comquer\Command;
 
-use CQRS\BusConfig\BusConfig;
+use Comquer\BusConfig\BusConfig;
 
 class RegisteredCommands extends BusConfig
 {
