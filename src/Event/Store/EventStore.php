@@ -6,7 +6,7 @@ use CQRS\Event\Event;
 
 interface EventStore
 {
-    public function registerEvent(Event $event): EventStoreId;
+    public function registerEvent(Event $event): EventId;
 
-    public function getById(EventStoreId $eventId): Event;
+    public function getById(EventId $eventId): Event;
 }
