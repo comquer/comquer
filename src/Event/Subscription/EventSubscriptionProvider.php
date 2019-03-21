@@ -18,8 +18,8 @@ class EventSubscriptionProvider
     public function getForEvent(Event $event): EventSubscriptionCollection
     {
         $eventClassName = new ClassNamespace(get_class($event));
-
         $filteredSubscriptions = $this->eventSubscriptions->filterByEventClassName($eventClassName);
+        
         foreach ($eventClassName->getParents() as $parentEventClassName) {
             $filteredSubscriptions->append(
                 $this->eventSubscriptions->filterByEventClassName($parentEventClassName)

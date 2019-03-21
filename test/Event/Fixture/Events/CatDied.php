@@ -12,9 +12,9 @@ class CatDied extends CatEvent
     /** @var string */
     private $catName;
 
-    public function __construct(string $dogName, \DateTimeImmutable $occurredOn = null)
+    public function __construct(string $catName, \DateTimeImmutable $occurredOn = null)
     {
-        $this->catName = $dogName;
+        $this->catName = $catName;
         parent::__construct($occurredOn);
     }
 
