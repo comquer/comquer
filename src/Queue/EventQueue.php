@@ -1,12 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace Comquer\Event\Queue;
+namespace Comquer\Queue;
 
 use Comquer\Event\Store\EventId;
 
 interface EventQueue
 {
-    public function push(EventId $eventId ): void;
+    public function push(EventId $eventId): void;
 
     public function pullNext(): EventId;
 

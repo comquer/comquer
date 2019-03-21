@@ -2,7 +2,7 @@
 
 namespace Comquer\Event\Store;
 
-use Comquer\Event\Event;
+use Comquer\Domain\Event;
 
 interface EventStore
 {
