@@ -24,6 +24,7 @@
         }
     },
     "require": {
-        "jakubgiminski/collection": "^1.2"
+        "comquer/collection": "dev-master",
+        "comquer/reflection": "dev-master"
     }
 }
