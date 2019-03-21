@@ -2,9 +2,10 @@
 
 namespace Comquer\Event\Subscription;
 
-use Collection\Collection;
-use Collection\Type;
-use Collection\UniqueIndex;
+use Comquer\Collection\Collection;
+use Comquer\Collection\Type;
+use Comquer\Collection\UniqueIndex;
+use Comquer\Reflection\ClassNamespace\ClassNamespace;
 
 class EventSubscriptionCollection extends Collection
 {
@@ -14,8 +15,28 @@ class EventSubscriptionCollection extends Collection
             $subscriptions,
             Type::object(EventSubscription::class),
             new UniqueIndex(function (EventSubscription $subscription) {
-                return $subscription->getEventClassName() . $subscription->getListenerClassName();
+                return "{$subscription->getEventClassName()}{$subscription->getListenerClassName()}";
             })
         );
+    }
+
+    public function filterByEventClassName(ClassNamespace $eventClassName): self
+    {
+        $filteredSubscriptions = new self();
+
+        foreach ($this as $subscription) {
+            if ($subscription->getEventClassName()->equals($eventClassName) === true) {
+                $filteredSubscriptions->add($subscription);
+            }
+        }
+
+        return $filteredSubscriptions;
+    }
+
+    public function append(EventSubscriptionCollection $collection): void
+    {
+        foreach ($collection as $element) {
+            $this->add($element);
+        }
     }
 }

@@ -2,10 +2,10 @@
 
 namespace Comquer\BusConfig;
 
-use Collection\Collection;
-use Collection\NotFoundException;
-use Collection\Type;
-use Collection\UniqueIndex;
+use Comquer\Collection\Collection;
+use Comquer\Collection\NotFoundException;
+use Comquer\Collection\Type;
+use Comquer\Collection\UniqueIndex;
 
 class BusConfig extends Collection
 {

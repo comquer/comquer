@@ -3,6 +3,7 @@
 namespace Comquer\Event\Subscription;
 
 use Comquer\Event\Event;
+use Comquer\Reflection\ClassNamespace\ClassNamespace;
 
 class EventSubscriptionProvider
 {
@@ -16,15 +17,15 @@ class EventSubscriptionProvider
 
     public function getForEvent(Event $event): EventSubscriptionCollection
     {
-        $eventSubscriptions = new EventSubscriptionCollection();
+        $eventClassName = new ClassNamespace(get_class($event));
 
-        /** @var EventSubscription $subscription */
-        foreach ($this->eventSubscriptions as $subscription) {
-            if ($subscription->getEventClassName() === get_class($event)) {
-                $eventSubscriptions->add($subscription);
-            }
+        $filteredSubscriptions = $this->eventSubscriptions->filterByEventClassName($eventClassName);
+        foreach ($eventClassName->getParents() as $parentEventClassName) {
+            $filteredSubscriptions->append(
+                $this->eventSubscriptions->filterByEventClassName($parentEventClassName)
+            );
         }
 
-        return $eventSubscriptions;
+        return $filteredSubscriptions;
     }
 }

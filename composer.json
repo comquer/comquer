@@ -25,6 +25,7 @@
     },
     "require": {
         "comquer/collection": "dev-master",
-        "comquer/reflection": "dev-master"
+        "comquer/reflection": "dev-master",
+        "psr/container": "^1.0@dev"
     }
 }
