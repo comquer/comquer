@@ -2,7 +2,8 @@
 
 namespace Comquer\Event\Store;
 
-interface SerializableEvent
+use Comquer\Serialization\Serializable;
+
+interface SerializableEvent extends Serializable
 {
-    public function serialize(): array;
 }
