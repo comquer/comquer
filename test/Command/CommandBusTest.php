@@ -37,7 +37,7 @@ class CommandBusTest extends TestCase
             ->willReturn(new DoSomethingHandler());
 
         $registeredCommands = RegisteredCommands::fromArray(
-            require_once __DIR__ . '/../Fixture/Command/commands.php'
+            require __DIR__ . '/../Fixture/Command/commands.php'
         );
 
         $commandBus = new CommandBus(
