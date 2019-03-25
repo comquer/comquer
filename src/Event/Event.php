@@ -2,11 +2,11 @@
 
 namespace Comquer\Event;
 
-use Comquer\Event\Store\DeserializableEvent;
+use Comquer\Serialization\Deserializable;
 use Comquer\Event\Store\SerializableEvent;
 use DateTimeImmutable;
 
-abstract class Event implements SerializableEvent, DeserializableEvent
+abstract class Event implements SerializableEvent, Deserializable
 {
     private $occurredOn;
 
