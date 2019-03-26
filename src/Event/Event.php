@@ -2,15 +2,14 @@
 
 namespace Comquer\Event;
 
+use Comquer\NamedResource;
 use Comquer\Serialization\Deserializable;
 use Comquer\Event\Store\SerializableEvent;
 use DateTimeImmutable;
 
-abstract class Event implements SerializableEvent, Deserializable
+abstract class Event implements SerializableEvent, Deserializable, NamedResource
 {
     private $occurredOn;
-
-    abstract public static function getName(): string;
 
     public function __construct(DateTimeImmutable $occurredOn = null)
     {
