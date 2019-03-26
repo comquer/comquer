@@ -6,4 +6,3 @@ interface NamedResource
 {
     public static function getName(): string;
 }
-
