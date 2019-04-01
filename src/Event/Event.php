@@ -26,8 +26,5 @@ abstract class Event implements SerializableEvent, DeserializableEvent, NamedRes
         return $this::getName();
     }
 
-    public static function getEventType(): string
-    {
-      return self::EVENT_TYPE;
-    }
+    public static function getEventType(): string;    
 }
