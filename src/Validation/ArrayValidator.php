@@ -23,7 +23,7 @@ class ArrayValidator
 
     public static function validateSingleKeyExists(string $requiredKey, array $array): void
     {
-        if (isset($requiredKey, $array) === false) {
+        if (array_key_exists($requiredKey, $array) === false) {
             throw ArrayMissingRequiredKeysException::singleKeyMissing($requiredKey);
         }
     }
