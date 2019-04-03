@@ -21,7 +21,7 @@ final class ArrayMissingRequiredKeysException extends RuntimeException
 
     public static function multipleKeysMissing(array $missingKeys): self
     {
-        $readableMissingKeys = implode (", ", $missingKeys);
+        $readableMissingKeys = implode (', ', $missingKeys);
         return new self("Required keys are missing: $readableMissingKeys", $missingKeys);
     }
 
