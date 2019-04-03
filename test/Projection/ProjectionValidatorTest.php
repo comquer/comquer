@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 class ProjectionValidatorTest extends TestCase
 {
     /** @test */
-    public function throws_exception_for_multiple_key_missing()
+    public function throws_exception_for_multiple_keys_missing()
     {
         $serializedProjection = [
             'this key' => 'exists',

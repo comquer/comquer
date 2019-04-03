@@ -24,7 +24,7 @@ class ArrayValidatorTest extends TestCase
     }
 
     /** @test */
-    public function throws_exception_for_multiple_key_missing()
+    public function throws_exception_for_multiple_keys_missing()
     {
         $invalidArray = [
             'this key' => 'exists',
