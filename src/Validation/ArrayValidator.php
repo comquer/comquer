@@ -4,7 +4,7 @@ namespace Comquer\Validation;
 
 class ArrayValidator
 {
-    public static function validateMultipleKeysExist(array $requiredKeys, array $array): void
+    public function validateMultipleKeysExist(array $requiredKeys, array $array): void
     {
         $missingKeys = [];
 
@@ -21,7 +21,7 @@ class ArrayValidator
         }
     }
 
-    public static function validateSingleKeyExists(string $requiredKey, array $array): void
+    public function validateSingleKeyExists(string $requiredKey, array $array): void
     {
         if (array_key_exists($requiredKey, $array) === false) {
             throw ArrayMissingRequiredKeysException::singleKeyMissing($requiredKey);

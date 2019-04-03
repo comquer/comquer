@@ -22,6 +22,6 @@ class ProjectionValidatorTest extends TestCase
         $this->expectException(get_class($expectedException));
         $this->expectExceptionMessage($expectedException->getMessage());
 
-        ProjectionValidator::validateSerialized('projection name', $missingKeys, $serializedProjection);
+        (new ProjectionValidator())->validateSerialized('projection name', $missingKeys, $serializedProjection);
     }
 }

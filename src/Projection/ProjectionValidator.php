@@ -7,10 +7,10 @@ use Comquer\Validation\ArrayMissingRequiredKeysException;
 
 class ProjectionValidator
 {
-    public static function validateSerialized(string $projectionName, array $requiredKeys, array $serializedProjection): void
+    public function validateSerialized(string $projectionName, array $requiredKeys, array $serializedProjection): void
     {
         try {
-            ArrayValidator::validateMultipleKeysExist($requiredKeys, $serializedProjection);
+            (new ArrayValidator())->validateMultipleKeysExist($requiredKeys, $serializedProjection);
         } catch (ArrayMissingRequiredKeysException $exception) {
             throw ProjectionValidatorException::missingRequiredKeysInSerializedProjection($projectionName, $exception->getMissingKeys());
         }

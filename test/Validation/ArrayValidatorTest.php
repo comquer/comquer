@@ -20,7 +20,7 @@ class ArrayValidatorTest extends TestCase
         $this->expectException(get_class($expectedException));
         $this->expectExceptionMessage($expectedException->getMessage());
 
-        ArrayValidator::validateSingleKeyExists('missing key', $invalidArray);
+        (new ArrayValidator())->validateSingleKeyExists('missing key', $invalidArray);
     }
 
     /** @test */
@@ -37,7 +37,7 @@ class ArrayValidatorTest extends TestCase
         $this->expectException(get_class($expectedException));
         $this->expectExceptionMessage($expectedException->getMessage());
 
-        ArrayValidator::validateMultipleKeysExist($missingKeys, $invalidArray); 
+        (new ArrayValidator())->validateMultipleKeysExist($missingKeys, $invalidArray);
     }
 }
 
