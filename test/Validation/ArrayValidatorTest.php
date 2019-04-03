@@ -37,7 +37,7 @@ class ArrayValidatorTest extends TestCase
         $this->expectException(get_class($expectedException));
         $this->expectExceptionMessage($expectedException->getMessage());
 
-        ArrayValidator::validateMultipleKeysExist($missingKeys, $invalidArray);
+        ArrayValidator::validateMultipleKeysExist($missingKeys, $invalidArray); 
     }
 }
 

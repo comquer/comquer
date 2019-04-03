@@ -4,7 +4,7 @@ namespace Comquer\Validation;
 
 use RuntimeException;
 
-class ArrayMissingRequiredKeysException extends RuntimeException
+final class ArrayMissingRequiredKeysException extends RuntimeException
 {
     private $missingKeys;
 
