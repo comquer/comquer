@@ -7,4 +7,6 @@ interface ProjectionRepository
     public function persist(Projection $projection): void;
 
     public function getById(ProjectionId $id): Projection;
+
+    public function projectionExists(ProjectionId $id): bool;
 }
