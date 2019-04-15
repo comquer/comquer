@@ -2,13 +2,14 @@
 
 namespace Comquer\Event\Queue;
 
+use Comquer\Event\Event;
 use Comquer\Event\Store\EventId;
 
 interface EventQueue
 {
-    public function push(EventId $eventId ): void;
+    public function push(Event $event): void;
 
-    public function pullNext(): EventId;
+    public function pullNext(): Event;
 
     public function isEmpty(): bool;
 }
