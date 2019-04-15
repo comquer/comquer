@@ -24,7 +24,6 @@
         }
     },
     "require": {
-        "comquer/collection": "dev-master",
-        "comquer/reflection": "dev-master"
+        "comquer/collection": "dev-master"
     }
 }
