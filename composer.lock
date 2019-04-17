@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4743a122c7cbe01aaae8c27d69b1b390",
+    "content-hash": "bb9e5fb94594da5de5c0b4b9fd2dea3c",
     "packages": [
         {
             "name": "comquer/collection",
@@ -37,6 +37,36 @@
                 }
             ],
             "time": "2019-03-14T12:09:48+00:00"
+        },
+        {
+            "name": "comquer/domain",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/comquer/domain.git",
+                "reference": "531e2132c4637ed554ac128065939d9bd505c776"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/comquer/domain/zipball/531e2132c4637ed554ac128065939d9bd505c776",
+                "reference": "531e2132c4637ed554ac128065939d9bd505c776",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Comquer\\Domain\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Jakub Giminski",
+                    "email": "jakubgiminski@gmail.com"
+                }
+            ],
+            "description": "Interfaces for domain integration",
+            "time": "2019-04-17T12:24:16+00:00"
         }
     ],
     "packages-dev": [
@@ -102,12 +132,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/myclabs/DeepCopy.git",
-                "reference": "3e01bdad3e18354c3dce54466b7fbe33a9f9f7f8"
+                "reference": "e6828efaba2c9b79f4499dae1d66ef8bfa7b2b72"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/3e01bdad3e18354c3dce54466b7fbe33a9f9f7f8",
-                "reference": "3e01bdad3e18354c3dce54466b7fbe33a9f9f7f8",
+                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/e6828efaba2c9b79f4499dae1d66ef8bfa7b2b72",
+                "reference": "e6828efaba2c9b79f4499dae1d66ef8bfa7b2b72",
                 "shasum": ""
             },
             "require": {
@@ -142,7 +172,7 @@
                 "object",
                 "object graph"
             ],
-            "time": "2018-06-11T23:09:50+00:00"
+            "time": "2019-04-07T13:18:21+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -719,12 +749,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "aed4efca869c86f7e118e47120ae18a2e8aac944"
+                "reference": "7602ff48472ed4f4a0d37348e37e39ade3fee5cf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/aed4efca869c86f7e118e47120ae18a2e8aac944",
-                "reference": "aed4efca869c86f7e118e47120ae18a2e8aac944",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/7602ff48472ed4f4a0d37348e37e39ade3fee5cf",
+                "reference": "7602ff48472ed4f4a0d37348e37e39ade3fee5cf",
                 "shasum": ""
             },
             "require": {
@@ -767,7 +797,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "8.1-dev"
+                    "dev-master": "8.2-dev"
                 }
             },
             "autoload": {
@@ -793,7 +823,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2019-03-27T15:11:08+00:00"
+            "time": "2019-04-15T07:12:41+00:00"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",
@@ -1424,16 +1454,16 @@
         },
         {
             "name": "theseer/tokenizer",
-            "version": "1.1.0",
+            "version": "1.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/theseer/tokenizer.git",
-                "reference": "cb2f008f3f05af2893a87208fe6a6c4985483f8b"
+                "reference": "1c42705be2b6c1de5904f8afacef5895cab44bf8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/theseer/tokenizer/zipball/cb2f008f3f05af2893a87208fe6a6c4985483f8b",
-                "reference": "cb2f008f3f05af2893a87208fe6a6c4985483f8b",
+                "url": "https://api.github.com/repos/theseer/tokenizer/zipball/1c42705be2b6c1de5904f8afacef5895cab44bf8",
+                "reference": "1c42705be2b6c1de5904f8afacef5895cab44bf8",
                 "shasum": ""
             },
             "require": {
@@ -1460,7 +1490,7 @@
                 }
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
-            "time": "2017-04-07T12:08:54+00:00"
+            "time": "2019-04-04T09:56:43+00:00"
         },
         {
             "name": "webmozart/assert",
@@ -1517,7 +1547,8 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "comquer/collection": 20
+        "comquer/collection": 20,
+        "comquer/domain": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
