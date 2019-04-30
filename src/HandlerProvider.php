@@ -6,4 +6,3 @@ interface HandlerProvider
 {
     public function get(string $handlerClassName);
 }
-

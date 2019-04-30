@@ -35,7 +35,7 @@ class CommandBusTest extends TestCase
         $handlerProvider
             ->method('get')
             ->with(GetSomethingHandler::class)
-            ->willReturn(new DoSomethingHandler());
+            ->willReturn(new GetSomethingHandler());
 
         $registeredQueries = RegisteredQueries::fromArray(
             require __DIR__ . '/../Fixture/Query/queries.php'
@@ -47,7 +47,7 @@ class CommandBusTest extends TestCase
         );
 
         self::assertSame(
-            'Something with id something id ',
+            'Something with id something id',
             $queryBus->handle($query)
         );
     }
