@@ -20,6 +20,17 @@ class EventSubscriptionCollection extends Collection
         );
     }
 
+    public static function fromArray(array $subscriptions) : self
+    {
+        $collection = new self();
+        foreach ($subscriptions as $eventName => $listeners) {
+            foreach ($listeners as $listenerName) {
+                $collection->add(new EventSubscription($eventName, $listenerName));
+            }
+        }
+        return $collection;
+    }
+
     public function getForEvent(Event $event) : self
     {
         $filtered = new self();
