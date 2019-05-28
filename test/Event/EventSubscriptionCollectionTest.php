@@ -4,6 +4,7 @@ namespace ComquerTest\Event;
 
 use Comquer\Event\EventSubscription;
 use Comquer\Event\EventSubscriptionCollection;
+use ComquerTest\Fixture\Event\CustomerBilled;
 use ComquerTest\Fixture\Event\ItemAdded;
 use ComquerTest\Fixture\Event\NotifyAdminAboutUserCreation;
 use ComquerTest\Fixture\Event\UpdateShoppingListProjection;
@@ -45,5 +46,13 @@ class EventSubscriptionCollectionTest extends TestCase
             self::assertSame(UserCreated::getName(), $subscription->getEventName());
             $subscription->getListenerName();
         }
+    }
+
+    /** @test */
+    function get_for_event_if_none_registered()
+    {
+        $subscriptions = EventSubscriptionCollection::fromArrayConfig(self::getArrayConfig())->getForEvent(new CustomerBilled());
+
+        self::assertTrue($subscriptions->isEmpty());
     }
 }
