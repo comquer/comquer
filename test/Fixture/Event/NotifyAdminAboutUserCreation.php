@@ -9,6 +9,7 @@ class NotifyAdminAboutUserCreation implements EventListener
 {
     public function __invoke(Event $event) : void
     {
+        // Notify the admin...
     }
 
     public static function getName(): string

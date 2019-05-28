@@ -9,6 +9,7 @@ class UpdateShoppingListProjection implements EventListener
 {
     public function __invoke(Event $event) : void
     {
+        // Update the projection...
     }
 
     public static function getName(): string
