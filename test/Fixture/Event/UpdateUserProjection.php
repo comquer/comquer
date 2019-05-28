@@ -12,7 +12,7 @@ class UpdateUserProjection implements EventListener
         // Update the projection...
     }
 
-    public static function getName(): string
+    public static function getName() : string
     {
         return 'update user projection';
     }

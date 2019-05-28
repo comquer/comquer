@@ -12,7 +12,7 @@ class NotifyAdminAboutUserCreation implements EventListener
         // Notify the admin...
     }
 
-    public static function getName(): string
+    public static function getName() : string
     {
         return 'notify admin about user creation';
     }

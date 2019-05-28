@@ -4,7 +4,7 @@ namespace ComquerTest\Fixture\Event;
 
 class CustomerBilled extends TestEvent
 {
-    public static function getName(): string
+    public static function getName() : string
     {
         return 'customer billed';
     }
