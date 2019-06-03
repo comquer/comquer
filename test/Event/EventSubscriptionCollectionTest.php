@@ -24,7 +24,7 @@ class EventSubscriptionCollectionTest extends TestCase
             ItemAdded::getName() => [
                 UpdateShoppingListProjection::getName(),
             ],
-      ];
+        ];
    }
 
     /** @test */
