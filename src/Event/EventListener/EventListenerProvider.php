@@ -2,8 +2,6 @@
 
 namespace Comquer\Event\EventListener;
 
-use Comquer\DomainIntegrationIntegrationIntegration\Event\EventQueue;
-use Comquer\Event\EventQueueItem;
 use Psr\Container\ContainerInterface;
 
 class EventListenerProvider
@@ -11,19 +9,18 @@ class EventListenerProvider
     /** @var ContainerInterface */
     private $container;
 
-    private $listenersConfig;
+    /** @var EventListenerConfig */
+    private $eventListenerConfig;
 
-    public function __construct(ContainerInterface $container)
+    public function __construct(ContainerInterface $container, EventListenerConfig $eventListenerConfig)
     {
         $this->container = $container;
+        $this->eventListenerConfig = $eventListenerConfig;
     }
 
-    public function consume(EventQueue $eventQueue) : void
+    public function getByName(string $eventListenerName) : EventListener
     {
-        /** @var EventQueueItem $eventQueueItem */
-        foreach ($eventQueue->pullNext() as $eventQueueItem) {
-            $this->container->get($eventQueueItem->getListenerName());
-        }
-
+        $listenerClassName = $this->eventListenerConfig->getListenerClassByName($eventListenerName);
+        return $this->container->get($listenerClassName);
     }
 }
