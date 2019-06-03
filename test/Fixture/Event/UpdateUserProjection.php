@@ -3,7 +3,7 @@
 namespace ComquerTest\Fixture\Event;
 
 use Comquer\DomainIntegration\Event\Event;
-use Comquer\Event\EventListener;
+use Comquer\Event\EventListener\EventListener;
 
 class UpdateUserProjection implements EventListener
 {

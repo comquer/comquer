@@ -22,7 +22,9 @@
     },
     "require": {
         "comquer/collection": "dev-master",
-        "comquer/domain-integration": "dev-master"
+        "comquer/domain-integration": "dev-master",
+        "comquer/reflection": "dev-refactor",
+        "psr/container": "^1.0@dev"
     },
     "require-dev": {
         "phpunit/phpunit": "^8.0"
