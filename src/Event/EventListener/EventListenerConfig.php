@@ -23,9 +23,9 @@ class EventListenerConfig extends Collection
     {
         $eventListenerConfig = new self();
 
-        foreach ($config as $eventName => $eventListenerName) {
+        foreach ($config as $listenerName => $listenerClassName) {
             $eventListenerConfig->add(
-                new EventListenerConfigElement($eventName, $eventListenerName)
+                new EventListenerConfigElement($listenerName, $listenerClassName)
             );
         }
 
