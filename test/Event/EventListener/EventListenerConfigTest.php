@@ -4,6 +4,7 @@ namespace ComquerTest\Event\EventListener;
 
 use Comquer\Event\EventListener\EventListenerConfig;
 use Comquer\Event\EventListener\EventListenerConfigElement;
+use Comquer\Event\EventListener\EventListenerConfigException;
 use ComquerTest\Fixture\Event\NotifyAdminAboutUserCreation;
 use ComquerTest\Fixture\Event\UpdateShoppingListProjection;
 use ComquerTest\Fixture\Event\UpdateUserProjection;
@@ -25,6 +26,7 @@ class EventListenerConfigTest extends TestCase
         self::assertInstanceOf(EventListenerConfig::class, $listenerConfig);
     }
 
+    /** @test */
     function get_listener_class_by_name()
     {
         $listenerConfig = new EventListenerConfig([
@@ -36,5 +38,15 @@ class EventListenerConfigTest extends TestCase
             UpdateShoppingListProjection::class,
             $listenerConfig->getListenerClassByName(UpdateShoppingListProjection::getName())
         );
+    }
+
+    /** @test */
+    function listener_not_found_by_name()
+    {
+        $notFoundException = EventListenerConfigException::listenerNotFoundByName(UpdateShoppingListProjection::getName());
+        $this->expectException(get_class($notFoundException));
+        $this->expectExceptionMessage($notFoundException->getMessage());
+
+        (new EventListenerConfig())->getListenerClassByName(UpdateShoppingListProjection::getName());
     }
 }
