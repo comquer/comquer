@@ -28,13 +28,13 @@ class EventDispatcherTest extends TestCase
         );
     }
 
+    /** @test */
     function dispatch_event()
     {
         $event = new ItemAdded();
 
-        $eventStore = $this->createMock(EventStore::class)
-            ->method('persist')
-            ->with($event);
+        $eventStore = $this->createMock(EventStore::class);
+        $eventStore->method('persist')->with($event);
 
         $eventSubscriptionCollection = new EventSubscriptionCollection([
             new EventSubscription($event::getName(), UpdateShoppingListProjection::getName())
@@ -42,12 +42,13 @@ class EventDispatcherTest extends TestCase
 
         $eventQueueItem = new EventQueueItem($event, UpdateShoppingListProjection::getName());
 
-        $eventQueue = $this->createMock(EventQueue::class)
-            ->method('push')
-            ->with($eventQueueItem);
+        $eventQueue = $this->createMock(EventQueue::class);
+        $eventQueue->method('push')->with($eventQueueItem);
 
         $eventDispatcher = new \Comquer\Event\EventDispatcher($eventStore, $eventSubscriptionCollection, $eventQueue);
 
-        $eventDispatcher->dispatch($event);
+        self::assertNull(
+            $eventDispatcher->dispatch($event)
+        );
     }
 }
