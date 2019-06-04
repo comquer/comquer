@@ -3,8 +3,8 @@
 namespace Comquer\Event;
 
 use Comquer\DomainIntegration\Event\Event;
+use Comquer\DomainIntegration\Event\EventQueue;
 use Comquer\DomainIntegration\Event\EventStore;
-use Comquer\DomainIntegrationIntegrationIntegration\Event\EventQueue;
 
 class EventDispatcher implements \Comquer\DomainIntegration\Event\EventDispatcher
 {
