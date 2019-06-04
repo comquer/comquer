@@ -3,7 +3,7 @@
 namespace ComquerTest\Fixture\Event;
 
 use Comquer\DomainIntegration\Event\Event;
-use Comquer\Event\EventListener\EventListener;
+use Comquer\DomainIntegration\Event\EventListener;
 
 class NotifyAdminAboutUserCreation implements EventListener
 {

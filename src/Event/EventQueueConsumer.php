@@ -3,7 +3,6 @@
 namespace Comquer\Event;
 
 use Comquer\DomainIntegration\Event\EventQueue;
-use Comquer\Event\EventListener\EventListener;
 use Comquer\Event\EventListener\EventListenerProvider;
 
 class EventQueueConsumer

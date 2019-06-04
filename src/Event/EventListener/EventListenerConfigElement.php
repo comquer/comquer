@@ -2,6 +2,7 @@
 
 namespace Comquer\Event\EventListener;
 
+use Comquer\DomainIntegration\Event\EventListener;
 use Comquer\Reflection\ClassName\ClassName;
 
 class EventListenerConfigElement
