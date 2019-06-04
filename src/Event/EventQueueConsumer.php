@@ -2,6 +2,7 @@
 
 namespace Comquer\Event;
 
+use Comquer\DomainIntegration\Event\EventListener;
 use Comquer\DomainIntegration\Event\EventQueue;
 use Comquer\Event\EventListener\EventListenerProvider;
 
