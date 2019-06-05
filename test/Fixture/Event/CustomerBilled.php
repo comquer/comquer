@@ -2,10 +2,17 @@
 
 namespace ComquerTest\Fixture\Event;
 
+use Comquer\Event\AggregateType;
+
 class CustomerBilled extends TestEvent
 {
     public static function getName() : string
     {
         return 'customer billed';
+    }
+
+    public function getAggregateType() :  \Comquer\DomainIntegration\AggregateType
+    {
+        return new AggregateType('customer');
     }
 }

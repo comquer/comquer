@@ -4,15 +4,15 @@ namespace ComquerTest\Fixture\Event;
 
 use Comquer\Event\AggregateType;
 
-class UserCreated extends TestEvent
+class ItemRemoved extends TestEvent
 {
     public static function getName() : string
     {
-        return 'user created';
+        return 'item removed';
     }
 
     public function getAggregateType() : \Comquer\DomainIntegration\AggregateType
     {
-        return new AggregateType('user');
+        return new AggregateType('shopping list');
     }
 }

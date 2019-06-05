@@ -2,10 +2,17 @@
 
 namespace ComquerTest\Fixture\Event;
 
+use Comquer\Event\AggregateType;
+
 class ItemAdded extends TestEvent
 {
     public static function getName() : string
     {
         return 'item added';
+    }
+
+    public function getAggregateType() : \Comquer\DomainIntegration\AggregateType
+    {
+        return new AggregateType('shopping list');
     }
 }

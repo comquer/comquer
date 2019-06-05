@@ -11,23 +11,23 @@ class EventDispatcher implements \Comquer\DomainIntegration\Event\EventDispatche
     /** @var EventStore */
     private $eventStore;
 
-    /** @var EventSubscriptionCollection */
-    private $eventSubscriptionCollection;
+    /** @var EventSubscriptionProvider */
+    private $eventSubscriptionProvider;
 
     /** @var EventQueue */
     private $eventQueue;
 
-    public function __construct(EventStore $eventStore, EventSubscriptionCollection $eventSubscriptionCollection, EventQueue $eventQueue)
+    public function __construct(EventStore $eventStore, EventSubscriptionProvider $eventSubscriptionProvider, EventQueue $eventQueue)
     {
         $this->eventStore = $eventStore;
-        $this->eventSubscriptionCollection = $eventSubscriptionCollection;
+        $this->eventSubscriptionProvider = $eventSubscriptionProvider;
         $this->eventQueue = $eventQueue;
     }
 
     public function dispatch(Event $event) : void
     {
         $this->eventStore->persist($event);
-        $subscriptions = $this->eventSubscriptionCollection->getForEvent($event);
+        $subscriptions = $this->eventSubscriptionProvider->getForEvent($event);
 
         /** @var EventSubscription $subscription */
         foreach ($subscriptions as $subscription) {

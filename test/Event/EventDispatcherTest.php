@@ -2,12 +2,12 @@
 
 namespace ComquerTest\Event;
 
-use Comquer\DomainIntegration\Event\EventDispatcher;
 use Comquer\DomainIntegration\Event\EventQueue;
 use Comquer\DomainIntegration\Event\EventStore;
+use Comquer\Event\EventDispatcher;
 use Comquer\Event\EventQueueItem;
 use Comquer\Event\EventSubscription;
-use Comquer\Event\EventSubscriptionCollection;
+use Comquer\Event\EventSubscriptionProvider;
 use ComquerTest\Fixture\Event\ItemAdded;
 use ComquerTest\Fixture\Event\UpdateShoppingListProjection;
 use PHPUnit\Framework\TestCase;
@@ -17,14 +17,15 @@ class EventDispatcherTest extends TestCase
     /** @test */
     function instantiate_event_dispatcher()
     {
-        self::assertInstanceOf(
-            EventDispatcher::class,
-            new \Comquer\Event\EventDispatcher(
-                $this->createMock(EventStore::class),
-                new EventSubscriptionCollection(),
-                $this->createMock(EventQueue::class)
+        $dispatcher = new EventDispatcher(
+            $this->createMock(EventStore::class),
+            new EventSubscriptionProvider(),
+            $this->createMock(EventQueue::class)
+        );
 
-            )
+        self::assertInstanceOf(
+            \Comquer\DomainIntegration\Event\EventDispatcher::class,
+            $dispatcher
         );
     }
 
@@ -36,7 +37,7 @@ class EventDispatcherTest extends TestCase
         $eventStore = $this->createMock(EventStore::class);
         $eventStore->method('persist')->with($event);
 
-        $eventSubscriptionCollection = new EventSubscriptionCollection([
+        $subscriptionProvider = new EventSubscriptionProvider([
             new EventSubscription($event::getName(), UpdateShoppingListProjection::getName())
         ]);
 
@@ -45,7 +46,7 @@ class EventDispatcherTest extends TestCase
         $eventQueue = $this->createMock(EventQueue::class);
         $eventQueue->method('push')->with($eventQueueItem);
 
-        $eventDispatcher = new \Comquer\Event\EventDispatcher($eventStore, $eventSubscriptionCollection, $eventQueue);
+        $eventDispatcher = new EventDispatcher($eventStore, $subscriptionProvider, $eventQueue);
 
         self::assertNull(
             $eventDispatcher->dispatch($event)

@@ -2,7 +2,7 @@
 
 namespace Comquer\Event;
 
-class EventSubscription
+class EventSubscription implements Subscription
 {
     /** @var string */
     private $eventName;
@@ -24,5 +24,10 @@ class EventSubscription
     public function getListenerName() : string
     {
         return $this->listenerName;
+    }
+
+    public function __toString(): string
+    {
+        return "{$this->getEventName()}{$this->getListenerName()}";
     }
 }
