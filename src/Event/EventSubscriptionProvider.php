@@ -24,15 +24,19 @@ class EventSubscriptionProvider extends Collection
     {
         $collection = new self();
 
-        foreach ($subscriptions['eventNames'] as $eventName => $listeners) {
-            foreach ($listeners as $listenerName) {
-                $collection->add(new EventSubscription($eventName, $listenerName));
+        if (isset($subscriptions['eventNames']) && is_array($subscriptions['eventNames'])) {
+            foreach ($subscriptions['eventNames'] as $eventName => $listeners) {
+                foreach ($listeners as $listenerName) {
+                    $collection->add(new EventSubscription($eventName, $listenerName));
+                }
             }
         }
 
-        foreach ($subscriptions['aggregateTypes'] as $aggregateType => $listeners) {
-            foreach ($listeners as $listenerName) {
-                $collection->add(new AggregateEventsSubscription(new AggregateType($aggregateType), $listenerName));
+        if (isset($subscriptions['aggregateTypes']) && is_array($subscriptions['aggregateTypes'])) {
+            foreach ($subscriptions['aggregateTypes'] as $aggregateType => $listeners) {
+                foreach ($listeners as $listenerName) {
+                    $collection->add(new AggregateEventsSubscription(new AggregateType($aggregateType), $listenerName));
+                }
             }
         }
 
