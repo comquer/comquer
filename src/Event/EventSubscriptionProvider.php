@@ -43,7 +43,6 @@ class EventSubscriptionProvider extends Collection
     {
         $filtered = new self();
 
-        /** @var EventSubscription $subscription */
         foreach ($this as $subscription) {
             switch (get_class($subscription)) {
                 case EventSubscription::class:
