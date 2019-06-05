@@ -23,7 +23,7 @@
     "require": {
         "comquer/collection": "dev-master",
         "comquer/domain-integration": "dev-master",
-        "comquer/reflection": "dev-refactor",
+        "comquer/reflection": "dev-master",
         "psr/container": "^1.0@dev"
     },
     "require-dev": {
