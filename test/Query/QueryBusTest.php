@@ -5,7 +5,6 @@ namespace ComquerTest\Query;
 use Comquer\HandlerProvider;
 use Comquer\Query\QueryBus;
 use Comquer\Query\RegisteredQueries;
-use ComquerTest\Fixture\Command\DoSomething\DoSomethingHandler;
 use ComquerTest\Fixture\Query\GetSomething\GetSomething;
 use ComquerTest\Fixture\Query\GetSomething\GetSomethingHandler;
 use PHPUnit\Framework\TestCase;
