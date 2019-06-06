@@ -5,7 +5,7 @@
 # Comquer 
 Comquer aims to be a php application framework that is event sourced, emphasises command and query separation, and is built with your domain code in mind.
 
-Comquer is a side effect of a commercial project from Gigabyte Software. Therefore, development of Comquer is strongly driven by the needs of the commercial part. The app is yet to enter the market and the framework far from complete. In the commercial project we use Symfony Framework for the areas that Comquer does not yet cover. Our ambition is that unlike Symfony, which is an MVC framework, Comquer will leverage an architecture of commands, queries, and events. While building Comquer we do our best making it compatible with your domain code, without polluting domain with the framework.
+Comquer is a side effect of a commercial project from Gigabyte Software. Therefore, development of Comquer is strongly driven by the needs of that project. The app is yet to enter the market and the framework far from complete. In the commercial project we use Symfony Framework for the areas that Comquer does not yet cover. Our ambition is that unlike Symfony, which is an MVC framework, Comquer will leverage an architecture of commands, queries, and events. While building Comquer we do our best making it compatible with your domain code, without polluting domain with the framework.
 
 ### State of the project 
 
