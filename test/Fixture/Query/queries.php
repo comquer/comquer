@@ -1,5 +1,8 @@
 <?php
 
+use ComquerTest\Fixture\Query\GetSomething\GetSomething;
+use ComquerTest\Fixture\Query\GetSomething\GetSomethingHandler;
+
 return [
-    \ComquerTest\Fixture\Query\GetSomething\GetSomething::class => \ComquerTest\Fixture\Query\GetSomething\GetSomethingHandler::class,
+    GetSomething::class => GetSomethingHandler::class,
 ];

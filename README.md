@@ -3,9 +3,10 @@
 [![Build Status](https://scrutinizer-ci.com/g/comquer/comquer/badges/build.png?b=master)](https://scrutinizer-ci.com/g/comquer/comquer/build-status/master)
 
 # Comquer 
-CQRS and Event Sourcing PHP Framework.
+Comquer is aiming to be a php application framework that is event sourced, emphasises command and query separation, and is built with your domain code in mind.
 
-### Warning 
+### State of the project 
+
 This project is in early phases of development, so expect BC breaking all the time.
 
 ### Installation
