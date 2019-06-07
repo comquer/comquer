@@ -23,20 +23,42 @@ class EventSubscriptionProvider extends Collection
     public static function fromArrayConfig(array $subscriptions) : self
     {
         $collection = new self();
+        $collection = self::parseEventNamesConfig($subscriptions, $collection);
+        $collection = self::parseAggregateTypesConfig($subscriptions, $collection);
 
-        if (isset($subscriptions['eventNames']) && is_array($subscriptions['eventNames'])) {
-            foreach ($subscriptions['eventNames'] as $eventName => $listeners) {
-                foreach ($listeners as $listenerName) {
-                    $collection->add(new EventSubscription($eventName, $listenerName));
-                }
+        return $collection;
+    }
+
+    private static function parseEventNamesConfig(array $subscriptions, self $collection) : self
+    {
+        if (
+            isset($subscriptions['eventNames']) === false
+            || is_array($subscriptions['eventNames'] === false)
+        ) {
+            return $collection;
+        }
+
+        foreach ($subscriptions['eventNames'] as $eventName => $listeners) {
+            foreach ($listeners as $listenerName) {
+                $collection->add(new EventSubscription($eventName, $listenerName));
             }
         }
 
-        if (isset($subscriptions['aggregateTypes']) && is_array($subscriptions['aggregateTypes'])) {
-            foreach ($subscriptions['aggregateTypes'] as $aggregateType => $listeners) {
-                foreach ($listeners as $listenerName) {
-                    $collection->add(new AggregateEventsSubscription(new AggregateType($aggregateType), $listenerName));
-                }
+        return $collection;
+    }
+
+    private static function parseAggregateTypesConfig(array $subscriptions, self $collection) : self
+    {
+        if (
+            isset($subscriptions['aggregateTypes']) === false
+            && is_array($subscriptions['aggregateTypes'] === false)
+        ) {
+            return $collection;
+        }
+
+        foreach ($subscriptions['aggregateTypes'] as $aggregateType => $listeners) {
+            foreach ($listeners as $listenerName) {
+                $collection->add(new AggregateEventsSubscription(new AggregateType($aggregateType), $listenerName));
             }
         }
 
