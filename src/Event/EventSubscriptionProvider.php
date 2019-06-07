@@ -51,7 +51,7 @@ class EventSubscriptionProvider extends Collection
     {
         if (
             isset($subscriptions['aggregateTypes']) === false
-            && is_array($subscriptions['aggregateTypes'] === false)
+            || is_array($subscriptions['aggregateTypes'] === false)
         ) {
             return $collection;
         }
