@@ -27,4 +27,17 @@ class EventQueueItem implements \Comquer\DomainIntegration\Event\EventQueueItem
     {
         return $this->listenerName;
     }
+
+    public static function deserialize(array $serialized) : self
+    {
+        return;
+    }
+
+    public function serialize() : array
+    {
+        $serializedEvent = $this->event->serialize();
+        $serializedEvent['listenerName'] = $this->listenerName;
+
+        return $serializedEvent;
+    }
 }
