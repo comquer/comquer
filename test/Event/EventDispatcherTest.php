@@ -3,6 +3,7 @@
 namespace ComquerTest\Event;
 
 use Comquer\DomainIntegration\Event\EventQueue;
+use Comquer\DomainIntegration\Event\EventQueueItemPublisher;
 use Comquer\DomainIntegration\Event\EventStore;
 use Comquer\Event\EventDispatcher;
 use Comquer\Event\EventQueueItem;
@@ -20,7 +21,7 @@ class EventDispatcherTest extends TestCase
         $dispatcher = new EventDispatcher(
             $this->createMock(EventStore::class),
             new EventSubscriptionProvider(),
-            $this->createMock(EventQueue::class)
+            $this->createMock(EventQueueItemPublisher::class)
         );
 
         self::assertInstanceOf(
@@ -43,8 +44,8 @@ class EventDispatcherTest extends TestCase
 
         $eventQueueItem = new EventQueueItem($event, UpdateShoppingListProjection::getName());
 
-        $eventQueue = $this->createMock(EventQueue::class);
-        $eventQueue->method('push')->with($eventQueueItem);
+        $eventQueue = $this->createMock(EventQueueItemPublisher::class);
+        $eventQueue->method('publish')->with($eventQueueItem);
 
         $eventDispatcher = new EventDispatcher($eventStore, $subscriptionProvider, $eventQueue);
 

@@ -4,6 +4,7 @@ namespace Comquer\Event;
 
 use Comquer\DomainIntegration\Event\Event;
 use Comquer\DomainIntegration\Event\EventQueue;
+use Comquer\DomainIntegration\Event\EventQueueItemPublisher;
 use Comquer\DomainIntegration\Event\EventStore;
 
 class EventDispatcher implements \Comquer\DomainIntegration\Event\EventDispatcher
@@ -14,14 +15,17 @@ class EventDispatcher implements \Comquer\DomainIntegration\Event\EventDispatche
     /** @var EventSubscriptionProvider */
     private $eventSubscriptionProvider;
 
-    /** @var EventQueue */
-    private $eventQueue;
+    /** @var EventQueueItemPublisher */
+    private $eventQueueItemPublisher;
 
-    public function __construct(EventStore $eventStore, EventSubscriptionProvider $eventSubscriptionProvider, EventQueue $eventQueue)
-    {
+    public function __construct(
+        EventStore $eventStore,
+        EventSubscriptionProvider $eventSubscriptionProvider,
+        EventQueueItemPublisher $eventQueueItemPublisher
+    ) {
         $this->eventStore = $eventStore;
         $this->eventSubscriptionProvider = $eventSubscriptionProvider;
-        $this->eventQueue = $eventQueue;
+        $this->eventQueueItemPublisher = $eventQueueItemPublisher;
     }
 
     public function dispatch(Event $event) : void
@@ -31,7 +35,7 @@ class EventDispatcher implements \Comquer\DomainIntegration\Event\EventDispatche
 
         /** @var EventSubscription $subscription */
         foreach ($subscriptions as $subscription) {
-            $this->eventQueue->push(new EventQueueItem($event, $subscription->getListenerName()));
+            $this->eventQueueItemPublisher->publish(new EventQueueItem($event, $subscription->getListenerName()));
         }
     }
 }
