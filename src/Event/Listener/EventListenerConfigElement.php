@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Comquer\Event\EventListener;
+namespace Comquer\Event\Listener;
 
 use Comquer\DomainIntegration\Event\EventListener;
 use Comquer\Reflection\ClassName\ClassName;
@@ -26,6 +26,7 @@ class EventListenerConfigElement
         $listenerReflection = new ClassName($listenerClassName);
         $listenerReflection->mustImplement(EventListener::class);
 
+        /** @var EventListener $listenerClassName */
         if ($listenerClassName::getName() !== $listenerName) {
             throw EventListenerConfigException::nameAndClassNameMismatch($listenerName, $listenerClassName);
         }

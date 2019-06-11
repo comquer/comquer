@@ -1,11 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace Comquer\Event;
+namespace Comquer\Event\Subscription;
 
 use Comquer\Collection\Collection;
 use Comquer\Collection\Type;
 use Comquer\Collection\UniqueIndex;
 use Comquer\DomainIntegration\Event\Event;
+use Comquer\Event\AggregateType;
 
 class EventSubscriptionProvider extends Collection
 {
@@ -27,6 +28,32 @@ class EventSubscriptionProvider extends Collection
         $collection = self::parseAggregateTypesConfig($subscriptions, $collection);
 
         return $collection;
+    }
+
+    public function getForEvent(Event $event) : self
+    {
+        $filteredSubscriptions = new self();
+
+        foreach ($this as $subscription) {
+            switch (get_class($subscription)) {
+                case EventSubscription::class:
+                    /** @var EventSubscription $subscription */
+                    if ($subscription->getEventName() === $event::getName()) {
+                        $filteredSubscriptions->add($subscription);
+                    }
+                    break;
+                case AggregateEventsSubscription::class:
+                    /** @var AggregateEventsSubscription $subscription*/
+                    if ((string) $subscription->getAggregateType() === (string) $event->getAggregateType()) {
+                        $filteredSubscriptions->add($subscription);
+                    }
+                    break;
+                default:
+                    throw EventSubscriptionProviderException::unexpectedSubscriptionImplementation(get_class($subscription));
+            }
+        }
+
+        return $filteredSubscriptions;
     }
 
     private static function parseEventNamesConfig(array $subscriptions, self $collection) : self
@@ -63,31 +90,5 @@ class EventSubscriptionProvider extends Collection
         }
 
         return $collection;
-    }
-
-    public function getForEvent(Event $event) : self
-    {
-        $filtered = new self();
-
-        foreach ($this as $subscription) {
-            switch (get_class($subscription)) {
-                case EventSubscription::class:
-                    /** @var EventSubscription $subscription */
-                    if ($subscription->getEventName() === $event::getName()) {
-                        $filtered->add($subscription);
-                    }
-                    break;
-                case AggregateEventsSubscription::class:
-                    /** @var AggregateEventsSubscription $subscription*/
-                    if ((string) $subscription->getAggregateType() === (string) $event->getAggregateType()) {
-                        $filtered->add($subscription);
-                    }
-                    break;
-                default:
-                    throw EventSubscriptionProviderException::unexpectedSubscriptionImplementation(get_class($subscription));
-            }
-        }
-
-        return $filtered;
     }
 }

@@ -1,7 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace Comquer\Event\EventListener;
+namespace Comquer\Event\Listener;
 
+use Comquer\DomainIntegration\Event\EventListener;
 use Psr\Container\ContainerInterface;
 
 class EventListenerProvider

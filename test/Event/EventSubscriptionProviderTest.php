@@ -2,10 +2,10 @@
 
 namespace ComquerTest\Event;
 
-use Comquer\Event\AggregateEventsSubscription;
+use Comquer\Event\Subscription\AggregateEventsSubscription;
 use Comquer\Event\AggregateType;
-use Comquer\Event\EventSubscription;
-use Comquer\Event\EventSubscriptionProvider;
+use Comquer\Event\Subscription\EventSubscription;
+use Comquer\Event\Subscription\EventSubscriptionProvider;
 use ComquerTest\Fixture\Event\CustomerBilled;
 use ComquerTest\Fixture\Event\NotifyAdminAboutUserCreation;
 use ComquerTest\Fixture\Event\UpdateShoppingListProjection;

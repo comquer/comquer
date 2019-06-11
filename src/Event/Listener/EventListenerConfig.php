@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Comquer\Event\EventListener;
+namespace Comquer\Event\Listener;
 
 use Comquer\Collection\Collection;
 use Comquer\Collection\Type;

@@ -2,18 +2,8 @@
 
 namespace Comquer\Event;
 
-class AggregateType implements \Comquer\DomainIntegration\AggregateType
+use Comquer\DomainIntegration\Id;
+
+class AggregateType extends Id implements \Comquer\DomainIntegration\AggregateType
 {
-    /** @var string */
-    private $value;
-
-    public function __construct(string $value)
-    {
-        $this->value = $value;
-    }
-
-    public function __toString() : string
-    {
-        return $this->value;
-    }
 }

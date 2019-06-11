@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Comquer\Event;
+namespace Comquer\Event\Queue;
 
 use Comquer\DomainIntegration\Event\Event;
 
@@ -28,16 +28,11 @@ class EventQueueItem implements \Comquer\DomainIntegration\Event\EventQueueItem
         return $this->listenerName;
     }
 
-    public static function deserialize(array $serialized)
-    {
-        return;
-    }
-
     public function serialize() : array
     {
-        $serializedEvent = $this->event->serialize();
-        $serializedEvent['listenerName'] = $this->listenerName;
+        $serializedEventQueueItem = $this->event->serialize();
+        $serializedEventQueueItem['listenerName'] = $this->listenerName;
 
-        return $serializedEvent;
+        return $serializedEventQueueItem;
     }
 }

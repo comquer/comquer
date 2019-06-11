@@ -2,9 +2,9 @@
 
 namespace ComquerTest\Event\EventListener;
 
-use Comquer\Event\EventListener\EventListenerConfig;
-use Comquer\Event\EventListener\EventListenerConfigElement;
-use Comquer\Event\EventListener\EventListenerConfigException;
+use Comquer\Event\Listener\EventListenerConfig;
+use Comquer\Event\Listener\EventListenerConfigElement;
+use Comquer\Event\Listener\EventListenerConfigException;
 use ComquerTest\Fixture\Event\NotifyAdminAboutUserCreation;
 use ComquerTest\Fixture\Event\UpdateShoppingListProjection;
 use ComquerTest\Fixture\Event\UpdateUserProjection;

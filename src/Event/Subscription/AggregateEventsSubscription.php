@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Comquer\Event;
+namespace Comquer\Event\Subscription;
 
 use Comquer\DomainIntegration\AggregateType;
 
@@ -28,7 +28,7 @@ class AggregateEventsSubscription implements Subscription
         return $this->listenerName;
     }
 
-    public function __toString(): string
+    public function __toString() : string
     {
         return "{$this->getAggregateType()}{$this->getListenerName()}";
     }
