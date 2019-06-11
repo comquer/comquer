@@ -3,8 +3,8 @@
 namespace Comquer\Event;
 
 use Comquer\DomainIntegration\Event\Event;
-use Comquer\DomainIntegration\Event\EventQueueItemPublisher;
-use Comquer\DomainIntegration\Event\EventStore;
+use Comquer\DomainIntegration\Event\Queue\EventQueueItemPublisher;
+use Comquer\DomainIntegration\Event\Store\EventStore;
 use Comquer\Event\Queue\EventQueueItem;
 use Comquer\Event\Subscription\EventSubscription;
 use Comquer\Event\Subscription\EventSubscriptionProvider;
