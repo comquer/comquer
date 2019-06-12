@@ -26,12 +26,12 @@ class FrameworkException extends RuntimeException implements Serializable, Deser
         );
     }
 
-    public static function deserialize(array $frameworkException) : self
+    public static function deserialize(array $exception) : self
     {
         return new self(
-            $frameworkException['message'],
-            $frameworkException['code'],
-            $frameworkException['exceptionClass']
+            $exception['message'],
+            $exception['code'],
+            $exception['exceptionClass']
         );
     }
 

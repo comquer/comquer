@@ -6,10 +6,19 @@ use Comquer\DomainIntegration\Event\Event;
 use Comquer\Event\AggregateId;
 use DateTimeImmutable;
 
-class CommandHandlingSucceeded extends CommandHandlingEvent
+final class CommandHandlingSucceeded extends CommandHandlingEvent
 {
     /** @var string */
     private const NAME = 'command handling succeeded';
+
+    public function __construct(string $commandName, AggregateId $aggregateId, DateTimeImmutable $occurredOn = null)
+    {
+        parent::__construct(
+            $commandName,
+            $aggregateId,
+            $occurredOn ?: new DateTimeImmutable()
+        );
+    }
 
     public function serialize() : array
     {

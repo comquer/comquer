@@ -6,5 +6,5 @@ use Comquer\DomainIntegration\Serialization\Deserializable;
 
 interface DeserializableFrameworkException extends Deserializable
 {
-    public static function deserialize(array $frameworkException) : FrameworkException;
+    public static function deserialize(array $exception) : FrameworkException;
 }

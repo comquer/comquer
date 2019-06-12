@@ -19,10 +19,14 @@ final class CommandHandlingFailed extends CommandHandlingEvent
         FrameworkException $exception,
         string $commandName,
         AggregateId $aggregateId,
-        DateTimeImmutable $occurredOn
+        DateTimeImmutable $occurredOn = null
     ) {
         $this->exception = $exception;
-        parent::__construct($commandName, $aggregateId, $occurredOn);
+        parent::__construct(
+            $commandName,
+            $aggregateId,
+            $occurredOn ?: new DateTimeImmutable()
+        );
     }
 
     public function serialize() : array

@@ -2,23 +2,38 @@
 
 namespace Comquer\Command;
 
-use Comquer\BusException;
+use Comquer\DomainIntegration\Command\Command;
+use Comquer\DomainIntegration\Event\EventDispatcher;
+use Comquer\Event\AggregateId;
+use Comquer\Event\Framework\Command\CommandHandlingFailed;
+use Comquer\Event\Framework\Command\CommandHandlingSucceeded;
+use Comquer\Exception\FrameworkException;
 use Comquer\HandlerProvider;
-use Exception;
+use Throwable;
 
 class CommandBus
 {
+    /** @var RegisteredCommands */
     private $registeredCommands;
 
+    /** @var HandlerProvider */
     private $handlerProvider;
 
-    public function __construct(RegisteredCommands $registeredCommands, HandlerProvider $handlerProvider)
+    /** @var EventDispatcher */
+    private $eventDispatcher;
+
+    public function __construct(RegisteredCommands $registeredCommands, HandlerProvider $handlerProvider, EventDispatcher $eventDispatcher)
     {
         $this->registeredCommands = $registeredCommands;
         $this->handlerProvider = $handlerProvider;
+        $this->eventDispatcher = $eventDispatcher;
     }
 
-    public function handle($command)
+    /**
+     * @param Command $command
+     * @throws Throwable
+     */
+    public function handle($command) : void
     {
         $this->registeredCommands->mustContain($command);
 
@@ -27,9 +42,23 @@ class CommandBus
         );
 
         try {
-            return $handler->handle($command);
-        } catch (Exception $exception) {
-            throw BusException::handlingFailed(get_class($command), $exception);
+            $handler->handle($command);
+        } catch (Throwable $exception) {
+            $this->eventDispatcher->dispatch(
+                new CommandHandlingFailed(
+                    FrameworkException::fromThrowable($exception),
+                    $command::getName(),
+                    new AggregateId('') // @todo figure out what the id is
+                )
+            );
+            throw $exception;
         }
+
+        $this->eventDispatcher->dispatch(
+            new CommandHandlingSucceeded(
+                $command::getName(),
+                new AggregateId('') // @todo figure out what the id is
+            )
+        );
     }
 }

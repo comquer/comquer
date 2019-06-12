@@ -2,7 +2,9 @@
 
 namespace Comquer;
 
+use Comquer\DomainIntegration\Command\CommandHandler;
+
 interface HandlerProvider
 {
-    public function get(string $handlerClassName);
+    public function get(string $handlerClassName) : CommandHandler;
 }
