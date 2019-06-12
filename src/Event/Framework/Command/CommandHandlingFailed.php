@@ -2,30 +2,53 @@
 
 namespace Comquer\Event\Framework\Command;
 
-use Comquer\DomainIntegration\AggregateId;
 use Comquer\DomainIntegration\Event\Event;
+use Comquer\Event\AggregateId;
+use Comquer\Exception\FrameworkException;
+use DateTimeImmutable;
 
-class CommandHandlingFailed extends CommandEvent
+final class CommandHandlingFailed extends CommandHandlingEvent
 {
-    public static function deserialize(array $event) : Event
-    {
-        // TODO: Implement deserialize() method.
-    }
+    /** @var string */
+    private const NAME = 'command handling failed';
 
-    public function getAggregateId() : AggregateId
-    {
-        // TODO: Implement getAggregateId() method.
-    }
+    /** @var FrameworkException */
+    private $exception;
 
-    public static function getName() : string
-    {
-        // TODO: Implement getName() method.
+    public function __construct(
+        FrameworkException $exception,
+        string $commandName,
+        AggregateId $aggregateId,
+        DateTimeImmutable $occurredOn
+    ) {
+        $this->exception = $exception;
+        parent::__construct($commandName, $aggregateId, $occurredOn);
     }
 
     public function serialize() : array
     {
-        return array_merge(
-            $this->command->serialize()
+        return [
+            'eventName' => self::getName(),
+            'aggregateType' => (string) $this->getAggregateType(),
+            'aggregateId' => (string) $this->getAggregateId(),
+            'commandName' => $this->getCommandName(),
+            'occurredOn' => $this->getOccurredOn()->getTimestamp(),
+            'exception' => $this->exception->serialize()
+        ];
+    }
+
+    public static function deserialize(array $event) : Event
+    {
+        return new self(
+            $event['exception']::deserialize(),
+            $event['commandName'],
+            new AggregateId($event['aggregateId']),
+            (new DateTimeImmutable())->setTimestamp($event['occurredOn'])
         );
+    }
+
+    public static function getName() : string
+    {
+        return self::NAME;
     }
 }

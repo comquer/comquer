@@ -2,41 +2,37 @@
 
 namespace Comquer\Event\Framework\Command;
 
-use Comquer\DomainIntegration\AggregateId;
-use Comquer\DomainIntegration\Event\AggregateType;
 use Comquer\DomainIntegration\Event\Event;
-use Comquer\Event\Framework\FrameworkEvent;
+use Comquer\Event\AggregateId;
 use DateTimeImmutable;
 
-class CommandHandlingSucceeded extends FrameworkEvent
+class CommandHandlingSucceeded extends CommandHandlingEvent
 {
-    public static function deserialize(array $event): Event
+    /** @var string */
+    private const NAME = 'command handling succeeded';
+
+    public function serialize() : array
     {
-        // TODO: Implement deserialize() method.
+        return [
+            'eventName' => self::getName(),
+            'aggregateType' => (string) $this->getAggregateType(),
+            'aggregateId' => (string) $this->getAggregateId(),
+            'commandName' => $this->getCommandName(),
+            'occurredOn' => $this->getOccurredOn()->getTimestamp(),
+        ];
     }
 
-    public function getAggregateId(): AggregateId
+    public static function deserialize(array $event) : Event
     {
-        // TODO: Implement getAggregateId() method.
+        return new self(
+            $event['commandName'],
+            new AggregateId($event['aggregateId']),
+            (new DateTimeImmutable())->setTimestamp($event['occurredOn'])
+        );
     }
 
-    public function getAggregateType(): AggregateType
+    public static function getName() : string
     {
-        // TODO: Implement getAggregateType() method.
-    }
-
-    public function getOccurredOn(): DateTimeImmutable
-    {
-        // TODO: Implement getOccurredOn() method.
-    }
-
-    public static function getName(): string
-    {
-        // TODO: Implement getName() method.
-    }
-
-    public function serialize(): array
-    {
-        // TODO: Implement serialize() method.
+        return self::NAME;
     }
 }
