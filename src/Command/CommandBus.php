@@ -37,12 +37,12 @@ class CommandBus
     {
         $this->registeredCommands->mustContain($command);
 
-        $handler = $this->handlerProvider->get(
+        $commandHandler = $this->handlerProvider->get(
             $this->registeredCommands->getHandlerClassName($command)
         );
 
         try {
-            $handler->handle($command);
+            $commandHandler->handle($command);
         } catch (Throwable $exception) {
             $this->eventDispatcher->dispatch(
                 new CommandHandlingFailed(
