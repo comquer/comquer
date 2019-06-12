@@ -2,7 +2,6 @@
 
 namespace ComquerTest\Event;
 
-use Comquer\DomainIntegration\Event\EventQueue;
 use Comquer\DomainIntegration\Event\Queue\EventQueueItemPublisher;
 use Comquer\DomainIntegration\Event\Store\EventStore;
 use Comquer\Event\EventDispatcher;

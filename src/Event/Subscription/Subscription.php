@@ -2,9 +2,9 @@
 
 namespace Comquer\Event\Subscription;
 
-interface Subscription
+use Comquer\DomainIntegration\StringValue;
+
+interface Subscription extends StringValue
 {
     public function getListenerName() : string;
-
-    public function __toString() : string;
 }
