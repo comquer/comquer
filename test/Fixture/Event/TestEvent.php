@@ -2,7 +2,7 @@
 
 namespace ComquerTest\Fixture\Event;
 
-use Comquer\DomainIntegration\AggregateId;
+use Comquer\DomainIntegration\Event\AggregateId;
 use Comquer\DomainIntegration\Event\Event;
 use DateTimeImmutable;
 

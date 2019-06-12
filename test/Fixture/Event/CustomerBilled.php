@@ -11,7 +11,7 @@ class CustomerBilled extends TestEvent
         return 'customer billed';
     }
 
-    public function getAggregateType() :  \Comquer\DomainIntegration\AggregateType
+    public function getAggregateType() :  \Comquer\DomainIntegration\Event\AggregateType
     {
         return new AggregateType('customer');
     }
