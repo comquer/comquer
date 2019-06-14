@@ -34,11 +34,11 @@ class EventSubscriptionProviderException extends RuntimeException
 
     private static function missingKeyFromArrayConfig(string $key) : self
     {
-        return new self("Array config is missing a required key: $key");
+        return new self("Array config is missing a required key: `$key`");
     }
 
     private static function invalidValueUnderKey(string $key) : self
     {
-        return new self("Value of $key must be an array");
+        return new self("Value of `$key` must be an array");
     }
 }
