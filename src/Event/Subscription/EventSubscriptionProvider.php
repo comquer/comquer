@@ -7,6 +7,7 @@ use Comquer\Collection\Type;
 use Comquer\Collection\UniqueIndex;
 use Comquer\DomainIntegration\Event\Event;
 use Comquer\Event\AggregateType;
+use Comquer\Event\Subscription\EventSubscriptionArrayConfigKeyName as ConfigKey;
 
 class EventSubscriptionProvider extends Collection
 {
@@ -24,6 +25,7 @@ class EventSubscriptionProvider extends Collection
     public static function fromArrayConfig(array $subscriptions) : self
     {
         $collection = new self();
+        self::validateConfigArrayStructure($subscriptions);
         $collection = self::parseEventNamesConfig($subscriptions, $collection);
         $collection = self::parseAggregateTypesConfig($subscriptions, $collection);
 
@@ -58,14 +60,7 @@ class EventSubscriptionProvider extends Collection
 
     private static function parseEventNamesConfig(array $subscriptions, self $collection) : self
     {
-        if (
-            isset($subscriptions['eventNames']) === false
-            || is_array($subscriptions['eventNames'] === false)
-        ) {
-            return $collection;
-        }
-
-        foreach ($subscriptions['eventNames'] as $eventName => $listeners) {
+        foreach ($subscriptions[(string) ConfigKey::EVENT_NAMES()] as $eventName => $listeners) {
             foreach ($listeners as $listenerName) {
                 $collection->add(new EventSubscription($eventName, $listenerName));
             }
@@ -76,19 +71,31 @@ class EventSubscriptionProvider extends Collection
 
     private static function parseAggregateTypesConfig(array $subscriptions, self $collection) : self
     {
-        if (
-            isset($subscriptions['aggregateTypes']) === false
-            || is_array($subscriptions['aggregateTypes'] === false)
-        ) {
-            return $collection;
-        }
-
-        foreach ($subscriptions['aggregateTypes'] as $aggregateType => $listeners) {
+        foreach ($subscriptions[(string) ConfigKey::AGGREGATE_TYPES()] as $aggregateType => $listeners) {
             foreach ($listeners as $listenerName) {
                 $collection->add(new AggregateEventsSubscription(new AggregateType($aggregateType), $listenerName));
             }
         }
 
         return $collection;
+    }
+
+    private static function validateConfigArrayStructure(array $subscriptions)
+    {
+        if (isset($subscriptions[(string) ConfigKey::EVENT_NAMES()]) === false) {
+            throw EventSubscriptionProviderException::missingEventNamesKeyFromArrayConfig();
+        }
+
+        if (is_array($subscriptions[(string) ConfigKey::EVENT_NAMES()]) === false) {
+            throw EventSubscriptionProviderException::invalidValueOfEventNames();
+        }
+
+        if (isset($subscriptions[(string) ConfigKey::AGGREGATE_TYPES()]) === false) {
+            throw EventSubscriptionProviderException::missingAggregateTypesKeyFromArrayConfig();
+        }
+
+        if (is_array($subscriptions[(string) ConfigKey::AGGREGATE_TYPES()]) === false) {
+            throw EventSubscriptionProviderException::invalidValueOfAggregateTypes();
+        }
     }
 }
