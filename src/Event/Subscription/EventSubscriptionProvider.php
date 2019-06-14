@@ -80,7 +80,7 @@ class EventSubscriptionProvider extends Collection
         return $collection;
     }
 
-    private static function validateConfigArrayStructure(array $subscriptions)
+    private static function validateConfigArrayStructure(array $subscriptions) : void
     {
         if (isset($subscriptions[(string) ConfigKey::EVENT_NAMES()]) === false) {
             throw EventSubscriptionProviderException::missingEventNamesKeyFromArrayConfig();

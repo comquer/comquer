@@ -3,6 +3,7 @@
 namespace Comquer\Event\Subscription;
 
 use RuntimeException;
+use Comquer\Event\Subscription\EventSubscriptionArrayConfigKeyName as ConfigKey;
 
 class EventSubscriptionProviderException extends RuntimeException
 {
@@ -14,22 +15,22 @@ class EventSubscriptionProviderException extends RuntimeException
 
     public static function missingEventNamesKeyFromArrayConfig() : self
     {
-        return self::missingKeyFromArrayConfig('eventNames');
+        return self::missingKeyFromArrayConfig((string) ConfigKey::EVENT_NAMES);
     }
 
     public static function missingAggregateTypesKeyFromArrayConfig() : self
     {
-        return self::missingKeyFromArrayConfig('aggregateTypes');
+        return self::missingKeyFromArrayConfig((string) ConfigKey::AGGREGATE_TYPES);
     }
 
     public static function invalidValueOfEventNames() : self
     {
-        return self::invalidValueUnderKey('eventNames');
+        return self::invalidValueUnderKey((string) ConfigKey::EVENT_NAMES);
     }
 
     public static function invalidValueOfAggregateTypes() : self
     {
-        return self::invalidValueUnderKey('aggregateType');
+        return self::invalidValueUnderKey((string) ConfigKey::AGGREGATE_TYPES);
     }
 
     private static function missingKeyFromArrayConfig(string $key) : self
