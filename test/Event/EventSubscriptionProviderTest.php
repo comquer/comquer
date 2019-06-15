@@ -40,14 +40,14 @@ class EventSubscriptionProviderTest extends TestCase
     /** @test */
     function create_from_array_config()
     {
-        $subscriptions = EventSubscriptionProvider::fromArrayConfig(self::getArrayConfig());
+        $subscriptions = EventSubscriptionProvider::fromConfig(self::getArrayConfig());
         self::assertCount(4, $subscriptions);
     }
 
     /** @test */
     function get_for_event()
     {
-        $subscriptions = EventSubscriptionProvider::fromArrayConfig(self::getArrayConfig())->getForEvent(new UserCreated());
+        $subscriptions = EventSubscriptionProvider::fromConfig(self::getArrayConfig())->getForEvent(new UserCreated());
 
         self::assertCount(3, $subscriptions);
 
@@ -69,7 +69,7 @@ class EventSubscriptionProviderTest extends TestCase
     /** @test */
     function get_for_event_if_none_registered()
     {
-        $subscriptions = EventSubscriptionProvider::fromArrayConfig(self::getArrayConfig())->getForEvent(new CustomerBilled());
+        $subscriptions = EventSubscriptionProvider::fromConfig(self::getArrayConfig())->getForEvent(new CustomerBilled());
 
         self::assertTrue($subscriptions->isEmpty());
     }
@@ -81,7 +81,7 @@ class EventSubscriptionProviderTest extends TestCase
         $this->expectException(get_class($exception));
         $this->expectExceptionMessage($exception->getMessage());
 
-        EventSubscriptionProvider::fromArrayConfig([
+        EventSubscriptionProvider::fromConfig([
             // missing event names
             (string) ConfigKey::AGGREGATE_TYPES() => [],
         ]);
@@ -94,7 +94,7 @@ class EventSubscriptionProviderTest extends TestCase
         $this->expectException(get_class($exception));
         $this->expectExceptionMessage($exception->getMessage());
 
-        EventSubscriptionProvider::fromArrayConfig([
+        EventSubscriptionProvider::fromConfig([
             (string) ConfigKey::EVENT_NAMES() => [],
             // missing aggregate types
         ]);
@@ -107,7 +107,7 @@ class EventSubscriptionProviderTest extends TestCase
         $this->expectException(get_class($exception));
         $this->expectExceptionMessage($exception->getMessage());
 
-        EventSubscriptionProvider::fromArrayConfig([
+        EventSubscriptionProvider::fromConfig([
             (string) ConfigKey::EVENT_NAMES() => 'not an array',
             (string) ConfigKey::AGGREGATE_TYPES() => [],
         ]);
@@ -120,7 +120,7 @@ class EventSubscriptionProviderTest extends TestCase
         $this->expectException(get_class($exception));
         $this->expectExceptionMessage($exception->getMessage());
 
-        EventSubscriptionProvider::fromArrayConfig([
+        EventSubscriptionProvider::fromConfig([
             (string) ConfigKey::EVENT_NAMES() => [],
             (string) ConfigKey::AGGREGATE_TYPES() => 'not a string',
         ]);

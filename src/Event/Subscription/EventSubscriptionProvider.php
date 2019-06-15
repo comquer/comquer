@@ -22,10 +22,10 @@ class EventSubscriptionProvider extends Collection
         );
     }
 
-    public static function fromArrayConfig(array $subscriptions) : self
+    public static function fromConfig(array $subscriptions) : self
     {
         $collection = new self();
-        self::validateConfigArrayStructure($subscriptions);
+        self::validateConfigStructure($subscriptions);
         $collection = self::parseEventNamesConfig($subscriptions, $collection);
         $collection = self::parseAggregateTypesConfig($subscriptions, $collection);
 
@@ -58,19 +58,18 @@ class EventSubscriptionProvider extends Collection
         return $filteredSubscriptions;
     }
 
-    private static function parseEventNamesConfig(array $subscriptions, self $collection) : self
+    private static function parseConfig(array $subscriptions, self $collection) : self
     {
+        foreach (ConfigKey::list() as $subscriptionType) {
+            self::parseConfigType( )
+        }
+
         foreach ($subscriptions[(string) ConfigKey::EVENT_NAMES()] as $eventName => $listeners) {
             foreach ($listeners as $listenerName) {
                 $collection->add(new EventSubscription($eventName, $listenerName));
             }
         }
 
-        return $collection;
-    }
-
-    private static function parseAggregateTypesConfig(array $subscriptions, self $collection) : self
-    {
         foreach ($subscriptions[(string) ConfigKey::AGGREGATE_TYPES()] as $aggregateType => $listeners) {
             foreach ($listeners as $listenerName) {
                 $collection->add(new AggregateEventsSubscription(new AggregateType($aggregateType), $listenerName));
@@ -78,9 +77,15 @@ class EventSubscriptionProvider extends Collection
         }
 
         return $collection;
+
+
     }
 
-    private static function validateConfigArrayStructure(array $subscriptions) : void
+    private static function parseAggregateTypesConfig(array $subscriptions, self $collection) : self
+    {
+    }
+
+    private static function validateConfigStructure(array $subscriptions) : void
     {
         if (isset($subscriptions[(string) ConfigKey::EVENT_NAMES()]) === false) {
             throw EventSubscriptionProviderException::missingEventNamesKeyFromArrayConfig();
