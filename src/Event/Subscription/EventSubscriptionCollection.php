@@ -53,12 +53,12 @@ class EventSubscriptionCollection extends Collection
 
         foreach ($subscriptions as $key => $listeners) {
             switch ($subscriptionType) {
-                case (string) EventSubscriptionType::EVENT_NAMES():
+                case EventSubscriptionType::EVENT_NAMES:
                     $eventSubscriptionCollection->addMany(
                         self::parseEventNameSubscriptions($key, $listeners)
                     );
                     break;
-                case (string) EventSubscriptionType::AGGREGATE_TYPES():
+                case EventSubscriptionType::AGGREGATE_TYPES:
                     $eventSubscriptionCollection->addMany(
                         self::parseAggregateTypeSubscriptions($key, $listeners)
                     );
