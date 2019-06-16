@@ -118,7 +118,7 @@ class EventSubscriptionProviderTest extends TestCase
 
         EventSubscriptionCollection::fromConfig([
             EventSubscriptionType::EVENT_NAMES => [],
-            EventSubscriptionType::AGGREGATE_TYPES => 'not a string',
+            EventSubscriptionType::AGGREGATE_TYPES => 'not an array',
         ]);
     }
 }
