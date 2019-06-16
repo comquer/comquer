@@ -6,10 +6,9 @@ use RuntimeException;
 
 class EventSubscriptionException extends RuntimeException
 {
-    public static function unexpectedSubscriptionImplementation(string $className) : self
+    public static function unexpectedSubscriptionType(string $subscriptionType) : self
     {
-        $subscription = Subscription::class;
-        return new self("Provided `$subscription` implementation `$className` is not handled");
+        return new self("Unexpected subscription type: `$subscriptionType`");
     }
 
     public static function missingKeyFromArrayConfig(string $key) : self

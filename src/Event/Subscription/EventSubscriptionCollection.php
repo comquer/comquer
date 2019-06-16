@@ -37,12 +37,10 @@ class EventSubscriptionCollection extends Collection
     private static function validateConfigStructure(array $subscriptions) : void
     {
         foreach (EventSubscriptionType::list() as $subscriptionType) {
-            // Make sure key exists
             if (isset($subscriptions[$subscriptionType]) === false) {
                 throw EventSubscriptionException::missingKeyFromArrayConfig($subscriptionType);
             }
 
-            // Make sure value is an array
             if (is_array($subscriptions[$subscriptionType]) === false) {
                 throw EventSubscriptionException::invalidValueUnderKey($subscriptionType);
             }
@@ -64,6 +62,9 @@ class EventSubscriptionCollection extends Collection
                     $eventSubscriptionCollection->addMany(
                         self::parseAggregateTypeSubscriptions($key, $listeners)
                     );
+                    break;
+                default:
+                    throw EventSubscriptionException::unexpectedSubscriptionType($subscriptionType);
             }
         }
 
