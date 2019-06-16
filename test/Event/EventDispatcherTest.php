@@ -6,7 +6,8 @@ use Comquer\DomainIntegration\Event\Queue\EventQueueItemPublisher;
 use Comquer\DomainIntegration\Event\Store\EventStore;
 use Comquer\Event\EventDispatcher;
 use Comquer\Event\Queue\EventQueueItem;
-use Comquer\Event\Subscription\EventSubscription;
+use Comquer\Event\Subscription\EventNameSubscription;
+use Comquer\Event\Subscription\EventSubscriptionCollection;
 use Comquer\Event\Subscription\EventSubscriptionProvider;
 use ComquerTest\Fixture\Event\ItemAdded;
 use ComquerTest\Fixture\Event\UpdateShoppingListProjection;
@@ -19,7 +20,7 @@ class EventDispatcherTest extends TestCase
     {
         $dispatcher = new EventDispatcher(
             $this->createMock(EventStore::class),
-            new EventSubscriptionProvider(),
+            new EventSubscriptionProvider(new EventSubscriptionCollection()),
             $this->createMock(EventQueueItemPublisher::class)
         );
 
@@ -37,9 +38,9 @@ class EventDispatcherTest extends TestCase
         $eventStore = $this->createMock(EventStore::class);
         $eventStore->method('persist')->with($event);
 
-        $subscriptionProvider = new EventSubscriptionProvider([
-            new EventSubscription($event::getName(), UpdateShoppingListProjection::getName())
-        ]);
+        $subscriptionProvider = new EventSubscriptionProvider(new EventSubscriptionCollection([
+            new EventNameSubscription($event::getName(), UpdateShoppingListProjection::getName())
+        ]));
 
         $eventQueueItem = new EventQueueItem($event, UpdateShoppingListProjection::getName());
 

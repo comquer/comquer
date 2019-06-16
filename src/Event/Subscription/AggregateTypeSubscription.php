@@ -3,19 +3,17 @@
 namespace Comquer\Event\Subscription;
 
 use Comquer\DomainIntegration\Event\AggregateType;
+use Comquer\DomainIntegration\Event\Event;
 
-class AggregateEventsSubscription implements Subscription
+class AggregateTypeSubscription extends Subscription
 {
     /** @var AggregateType */
     private $aggregateType;
 
-    /** @var string */
-    private $listenerName;
-
     public function __construct(AggregateType $aggregateType, string $listenerName)
     {
         $this->aggregateType = $aggregateType;
-        $this->listenerName = $listenerName;
+        parent::__construct($listenerName);
     }
 
     public function getAggregateType() : AggregateType
@@ -23,13 +21,13 @@ class AggregateEventsSubscription implements Subscription
         return $this->aggregateType;
     }
 
-    public function getListenerName() : string
-    {
-        return $this->listenerName;
-    }
-
     public function __toString() : string
     {
         return "{$this->getAggregateType()}{$this->getListenerName()}";
+    }
+
+    public function isForEvent(Event $event) : bool
+    {
+        return (string) $this->aggregateType === (string) $event->getAggregateType();
     }
 }

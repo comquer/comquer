@@ -6,7 +6,7 @@ use Comquer\DomainIntegration\Event\Event;
 use Comquer\DomainIntegration\Event\Queue\EventQueueItemPublisher;
 use Comquer\DomainIntegration\Event\Store\EventStore;
 use Comquer\Event\Queue\EventQueueItem;
-use Comquer\Event\Subscription\EventSubscription;
+use Comquer\Event\Subscription\EventNameSubscription;
 use Comquer\Event\Subscription\EventSubscriptionProvider;
 
 class EventDispatcher implements \Comquer\DomainIntegration\Event\EventDispatcher
@@ -35,7 +35,7 @@ class EventDispatcher implements \Comquer\DomainIntegration\Event\EventDispatche
         $this->eventStore->persist($event);
         $subscriptions = $this->eventSubscriptionProvider->getForEvent($event);
 
-        /** @var EventSubscription $subscription */
+        /** @var EventNameSubscription $subscription */
         foreach ($subscriptions as $subscription) {
             $this->eventQueueItemPublisher->publish(new EventQueueItem($event, $subscription->getListenerName()));
         }

@@ -2,31 +2,31 @@
 
 namespace ComquerTest\Event;
 
-use Comquer\Event\Subscription\AggregateEventsSubscription;
+use Comquer\Event\Subscription\AggregateTypeSubscription;
 use Comquer\Event\AggregateType;
-use Comquer\Event\Subscription\EventSubscription;
+use Comquer\Event\Subscription\EventNameSubscription;
+use Comquer\Event\Subscription\EventSubscriptionCollection;
+use Comquer\Event\Subscription\EventSubscriptionException;
 use Comquer\Event\Subscription\EventSubscriptionProvider;
-use Comquer\Event\Subscription\EventSubscriptionProviderException;
-use ComquerTest\Fixture\Event\CustomerBilled;
+use Comquer\Event\Subscription\EventSubscriptionType;
 use ComquerTest\Fixture\Event\NotifyAdminAboutUserCreation;
 use ComquerTest\Fixture\Event\UpdateShoppingListProjection;
 use ComquerTest\Fixture\Event\UpdateUserProjection;
 use ComquerTest\Fixture\Event\UserCreated;
 use PHPUnit\Framework\TestCase;
-use Comquer\Event\Subscription\EventSubscriptionArrayConfigKeyName as ConfigKey;
 
 class EventSubscriptionProviderTest extends TestCase
 {
-    static function getArrayConfig() : array
+    static function getConfig() : array
     {
         return [
-            (string) ConfigKey::EVENT_NAMES() => [
+            EventSubscriptionType::EVENT_NAMES => [
                 UserCreated::getName() => [
                     NotifyAdminAboutUserCreation::getName(),
                     UpdateUserProjection::getName(),
                 ],
             ],
-            (string) ConfigKey::AGGREGATE_TYPES() => [
+            EventSubscriptionType::AGGREGATE_TYPES => [
                 (string) new AggregateType('shopping list') => [
                     UpdateShoppingListProjection::getName(),
                 ],
@@ -40,25 +40,29 @@ class EventSubscriptionProviderTest extends TestCase
     /** @test */
     function create_from_array_config()
     {
-        $subscriptions = EventSubscriptionProvider::fromConfig(self::getArrayConfig());
+        $subscriptions = EventSubscriptionCollection::fromConfig(self::getConfig());
         self::assertCount(4, $subscriptions);
     }
 
     /** @test */
     function get_for_event()
     {
-        $subscriptions = EventSubscriptionProvider::fromConfig(self::getArrayConfig())->getForEvent(new UserCreated());
+        $subscriptionProvider = new EventSubscriptionProvider(
+            EventSubscriptionCollection::fromConfig(self::getConfig())
+        );
 
-        self::assertCount(3, $subscriptions);
+        $userCreatedSubscriptions = $subscriptionProvider->getForEvent(new UserCreated());
 
-        foreach ($subscriptions as $subscription) {
-            if ($subscription instanceof EventSubscription) {
-                /** @var EventSubscription $subscription */
+        self::assertCount(3, $userCreatedSubscriptions);
+
+        foreach ($userCreatedSubscriptions as $subscription) {
+            if ($subscription instanceof EventNameSubscription) {
+                /** @var EventNameSubscription $subscription */
                 self::assertSame(UserCreated::getName(), $subscription->getEventName());
             }
 
-            if ($subscription instanceof AggregateEventsSubscription) {
-                /** @var AggregateEventsSubscription $subscription */
+            if ($subscription instanceof AggregateTypeSubscription) {
+                /** @var AggregateTypeSubscription $subscription */
                 self::assertEquals(new AggregateType('user'), $subscription->getAggregateType());
             }
 
@@ -67,62 +71,54 @@ class EventSubscriptionProviderTest extends TestCase
     }
 
     /** @test */
-    function get_for_event_if_none_registered()
+    function throws_exception_if_event_names_key_is_missing_from_array_config()
     {
-        $subscriptions = EventSubscriptionProvider::fromConfig(self::getArrayConfig())->getForEvent(new CustomerBilled());
-
-        self::assertTrue($subscriptions->isEmpty());
-    }
-
-    /** @test */
-    function throw_exception_if_eventNames_key_is_missing_from_array_config()
-    {
-        $exception = EventSubscriptionProviderException::missingEventNamesKeyFromArrayConfig();
+        $exception = EventSubscriptionException::missingKeyFromArrayConfig(EventSubscriptionType::EVENT_NAMES);
         $this->expectException(get_class($exception));
         $this->expectExceptionMessage($exception->getMessage());
 
-        EventSubscriptionProvider::fromConfig([
-            // missing event names
-            (string) ConfigKey::AGGREGATE_TYPES() => [],
+        EventSubscriptionCollection::fromConfig([
+//            EventSubscriptionType::EVENT_NAMES => [],
+            EventSubscriptionType::AGGREGATE_TYPES => [],
         ]);
     }
 
     /** @test */
-    function throw_exception_if_aggregateTypes_key_is_missing_from_array_config()
+    function exception_if_aggregate_types_key_is_missing_from_array_config()
     {
-        $exception = EventSubscriptionProviderException::missingAggregateTypesKeyFromArrayConfig();
+        $exception = EventSubscriptionException::missingKeyFromArrayConfig(EventSubscriptionType::AGGREGATE_TYPES);
         $this->expectException(get_class($exception));
         $this->expectExceptionMessage($exception->getMessage());
 
-        EventSubscriptionProvider::fromConfig([
-            (string) ConfigKey::EVENT_NAMES() => [],
-            // missing aggregate types
+        EventSubscriptionCollection::fromConfig([
+            EventSubscriptionType::EVENT_NAMES => [],
+//            EventSubscriptionType::AGGREGATE_TYPES => [],
         ]);
     }
 
     /** @test */
-    function throw_exception_if_eventNames_value_is_not_an_array()
+    function exception_if_event_names_value_is_not_an_array()
     {
-        $exception = EventSubscriptionProviderException::invalidValueOfEventNames();
+        $exception = EventSubscriptionException::invalidValueUnderKey(EventSubscriptionType::EVENT_NAMES);
         $this->expectException(get_class($exception));
         $this->expectExceptionMessage($exception->getMessage());
 
-        EventSubscriptionProvider::fromConfig([
-            (string) ConfigKey::EVENT_NAMES() => 'not an array',
-            (string) ConfigKey::AGGREGATE_TYPES() => [],
+        EventSubscriptionCollection::fromConfig([
+            EventSubscriptionType::EVENT_NAMES => 'not an array',
+            EventSubscriptionType::AGGREGATE_TYPES => [],
         ]);
     }
 
     /** @test */
-    function throw_exception_if_aggregateTypes_value_is_not_an_array()
+    function exception_if_aggregate_types_value_is_not_an_array()
     {
-        $exception = EventSubscriptionProviderException::invalidValueOfAggregateTypes();
+        $exception = EventSubscriptionException::invalidValueUnderKey(EventSubscriptionType::AGGREGATE_TYPES);
         $this->expectException(get_class($exception));
         $this->expectExceptionMessage($exception->getMessage());
 
-        EventSubscriptionProvider::fromConfig([
-            (string) ConfigKey::EVENT_NAMES() => [],
-            (string) ConfigKey::AGGREGATE_TYPES() => 'not a string',
+        EventSubscriptionCollection::fromConfig([
+            EventSubscriptionType::EVENT_NAMES => [],
+            EventSubscriptionType::AGGREGATE_TYPES => 'not a string',
         ]);
     }
 }

@@ -2,18 +2,17 @@
 
 namespace Comquer\Event\Subscription;
 
-class EventSubscription implements Subscription
+use Comquer\DomainIntegration\Event\Event;
+
+class EventNameSubscription extends Subscription
 {
     /** @var string */
     private $eventName;
 
-    /** @var string */
-    private $listenerName;
-
     public function __construct(string $eventName, string $listenerName)
     {
         $this->eventName = $eventName;
-        $this->listenerName = $listenerName;
+        parent::__construct($listenerName);
     }
 
     public function getEventName() : string
@@ -21,13 +20,13 @@ class EventSubscription implements Subscription
         return $this->eventName;
     }
 
-    public function getListenerName() : string
-    {
-        return $this->listenerName;
-    }
-
-    public function __toString(): string
+    public function __toString() : string
     {
         return "{$this->getEventName()}{$this->getListenerName()}";
+    }
+
+    public function isForEvent(Event $event) : bool
+    {
+        return $this->getEventName() === $event::getName();
     }
 }

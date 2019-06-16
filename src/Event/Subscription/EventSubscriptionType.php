@@ -9,13 +9,13 @@ use FatCode\Enum;
  * @method static EVENT_NAMES()
  * @method static AGGREGATE_TYPES()
  */
-class EventSubscriptionArrayConfigKeyName extends Enum implements StringValue
+class EventSubscriptionType extends Enum implements StringValue
 {
     public const EVENT_NAMES = 'event names';
 
     public const AGGREGATE_TYPES = 'aggregate types';
 
-    public function __toString(): string
+    public function __toString() : string
     {
         return $this->getValue();
     }
