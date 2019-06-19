@@ -2,9 +2,23 @@
 
 namespace Comquer\Event\Subscription;
 
+use Comquer\DomainIntegration\Event\Event;
 use Comquer\DomainIntegration\StringValue;
 
-interface Subscription extends StringValue
+abstract class Subscription implements StringValue
 {
-    public function getListenerName() : string;
+    /** @var string */
+    private $listenerName;
+
+    public function __construct(string $listenerName)
+    {
+        $this->listenerName = $listenerName;
+    }
+
+    public function getListenerName() : string
+    {
+        return $this->listenerName;
+    }
+
+    abstract public function isForEvent(Event $event) : bool;
 }
