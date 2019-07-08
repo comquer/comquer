@@ -2,9 +2,7 @@
 
 namespace Comquer\Command;
 
-use Comquer\BusException;
 use Comquer\HandlerProvider;
-use Exception;
 
 class CommandBus
 {
@@ -18,7 +16,7 @@ class CommandBus
         $this->handlerProvider = $handlerProvider;
     }
 
-    public function handle($command)
+    public function handle($command) : void
     {
         $this->registeredCommands->mustContain($command);
 
@@ -26,10 +24,6 @@ class CommandBus
             $this->registeredCommands->getHandlerClassName($command)
         );
 
-        try {
-            return $handler->handle($command);
-        } catch (Exception $exception) {
-            throw BusException::handlingFailed(get_class($command), $exception);
-        }
+        $handler->handle($command);
     }
 }
