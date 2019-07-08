@@ -45,9 +45,7 @@ class CommandBusTest extends TestCase
             $handlerProvider
         );
 
-        self::assertSame(
-            'something id',
-            $commandBus->handle($command)
-        );
+
+        self::assertNull($commandBus->handle($command));
     }
 }

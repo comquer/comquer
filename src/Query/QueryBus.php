@@ -2,14 +2,14 @@
 
 namespace Comquer\Query;
 
-use Comquer\BusException;
 use Comquer\HandlerProvider;
-use Exception;
 
 class QueryBus
 {
+    /** @var RegisteredQueries */
     private $registeredQueries;
 
+    /** @var HandlerProvider */
     private $handlerProvider;
 
     public function __construct(RegisteredQueries $registeredQueries, HandlerProvider $handlerProvider)
@@ -26,10 +26,6 @@ class QueryBus
             $this->registeredQueries->getHandlerClassName($query)
         );
 
-        try {
-            return $handler->handle($query);
-        } catch (Exception $exception) {
-            throw BusException::handlingFailed(get_class($query), $exception);
-        }
+        return $handler->handle($query);
     }
 }
