@@ -6,8 +6,10 @@ use Comquer\HandlerProvider;
 
 class CommandBus
 {
+    /** @var RegisteredCommands */
     private $registeredCommands;
 
+    /** @var HandlerProvider */
     private $handlerProvider;
 
     public function __construct(RegisteredCommands $registeredCommands, HandlerProvider $handlerProvider)
