@@ -4,9 +4,6 @@
     "version": "dev-master",
     "minimum-stability": "dev",
     "type": "library",
-    "require-dev": {
-        "phpunit/phpunit": "^8.0"
-    },
     "authors": [
         {
             "name": "Jakub Giminski",
@@ -24,6 +21,13 @@
         }
     },
     "require": {
-        "comquer/collection": "dev-master"
+        "comquer/collection": "dev-master",
+        "comquer/domain-integration": "dev-master",
+        "comquer/reflection": "dev-master",
+        "psr/container": "^1.0@dev",
+        "fatcode/enum": "dev-master"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.0"
     }
 }
