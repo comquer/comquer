@@ -11,7 +11,7 @@ class ItemRemoved extends TestEvent
         return 'item removed';
     }
 
-    public function getAggregateType() : \Comquer\DomainIntegration\Event\AggregateType
+    public function getAggregateType() : \Comquer\Event\AggregateType
     {
         return new AggregateType('shopping list');
     }

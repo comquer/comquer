@@ -2,8 +2,8 @@
 
 namespace Comquer\Event\Subscription;
 
-use Comquer\DomainIntegration\Event\Event;
-use Comquer\DomainIntegration\StringValue;
+use Comquer\Event\Event;
+use Comquer\StringValue;
 
 abstract class Subscription implements StringValue
 {

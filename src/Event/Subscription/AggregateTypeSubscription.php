@@ -2,8 +2,8 @@
 
 namespace Comquer\Event\Subscription;
 
-use Comquer\DomainIntegration\Event\AggregateType;
-use Comquer\DomainIntegration\Event\Event;
+use Comquer\Event\AggregateType;
+use Comquer\Event\Event;
 
 class AggregateTypeSubscription extends Subscription
 {

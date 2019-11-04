@@ -2,8 +2,8 @@
 
 namespace Comquer\Event;
 
-use Comquer\DomainIntegration\Id;
+use Comquer\Id;
 
-class AggregateType extends Id implements \Comquer\DomainIntegration\Event\AggregateType
+class AggregateType extends Id implements \Comquer\Event\AggregateType
 {
 }

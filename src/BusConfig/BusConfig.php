@@ -14,7 +14,7 @@ class BusConfig extends Collection
         parent::__construct(
             $elements,
             Type::object(ConfigElement::class),
-            new UniqueIndex(function(ConfigElement $configElement) {
+            new UniqueIndex(function (ConfigElement $configElement) {
                return $configElement->getKey();
             })
         );

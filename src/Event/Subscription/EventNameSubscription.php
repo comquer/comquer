@@ -2,7 +2,7 @@
 
 namespace Comquer\Event\Subscription;
 
-use Comquer\DomainIntegration\Event\Event;
+use Comquer\Event\Event;
 
 class EventNameSubscription extends Subscription
 {

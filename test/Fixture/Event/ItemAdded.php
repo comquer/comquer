@@ -11,7 +11,7 @@ class ItemAdded extends TestEvent
         return 'item added';
     }
 
-    public function getAggregateType() : \Comquer\DomainIntegration\Event\AggregateType
+    public function getAggregateType() : \Comquer\Event\AggregateType
     {
         return new AggregateType('shopping list');
     }
