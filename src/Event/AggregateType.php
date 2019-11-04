@@ -4,6 +4,6 @@ namespace Comquer\Event;
 
 use Comquer\Id;
 
-class AggregateType extends Id implements \Comquer\Event\AggregateType
+class AggregateType extends Id
 {
 }
