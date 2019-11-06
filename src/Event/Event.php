@@ -4,15 +4,19 @@ namespace Comquer\Event;
 
 use Comquer\DomainIntegration\Event\AggregateId;
 use Comquer\DomainIntegration\Event\AggregateType;
+use Comquer\Serialization\Deserializable;
+use Comquer\Serialization\Serializable;
 use DateTimeImmutable;
 
-abstract class Event
+abstract class Event implements Serializable, Deserializable
 {
     private $aggregateId;
 
     private $aggregateType;
 
     private $occurredOn;
+
+    abstract public static function getEventName() : string;
 
     public function __construct(AggregateId $aggregateId, AggregateType $aggregateType, ?DateTimeImmutable $occurredOn)
     {
@@ -38,6 +42,6 @@ abstract class Event
 
     public function __toString() : string
     {
-        return $this::getName();
+        return $this::getEventName();
     }
 }

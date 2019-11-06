@@ -22,7 +22,7 @@ class CommandConfiguration extends Collection
 
     public function getCommandHandlerClassForCommand(Command $command) : string
     {
-        if ($this->contains((string) $command)) {
+        if ($this->contains((string) $command) === true) {
             return $this->get((string) $command);
         }
 
