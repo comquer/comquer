@@ -4,16 +4,16 @@ namespace Comquer\Command;
 
 final class CommandBus
 {
-    private $handlerProvider;
+    private $commandHandlerProvider;
 
     public function __construct(CommandHandlerProvider $handlerProvider)
     {
-        $this->handlerProvider = $handlerProvider;
+        $this->commandHandlerProvider = $handlerProvider;
     }
 
     public function __invoke(Command $command) : void
     {
-        $commandHandler = ($this->handlerProvider)($command);
+        $commandHandler = ($this->commandHandlerProvider)($command);
         $commandHandler($command);
     }
 }

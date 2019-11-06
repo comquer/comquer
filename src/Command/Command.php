@@ -2,6 +2,10 @@
 
 namespace Comquer\Command;
 
-interface Command
+abstract class Command
 {
+    public function __toString() : string
+    {
+        return get_class($this);
+    }
 }
