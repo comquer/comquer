@@ -6,8 +6,6 @@ use Comquer\Collection\Collection;
 use Comquer\Collection\Type;
 use Comquer\Collection\UniqueIndex;
 use Comquer\Command\Command;
-use Comquer\Command\Configuration\CommandConfigurationEntry;
-use Comquer\Command\Configuration\CommandConfigurationException;
 
 class CommandConfiguration extends Collection
 {

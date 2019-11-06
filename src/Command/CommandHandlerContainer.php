@@ -13,8 +13,8 @@ class CommandHandlerContainer
         $this->container = $container;
     }
 
-    public function __invoke(string $className) : CommandHandler
+    public function __invoke(string $class) : CommandHandler
     {
-        return $this->container->get($className);
+        return $this->container->get($class);
     }
 }
