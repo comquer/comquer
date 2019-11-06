@@ -4,5 +4,5 @@ namespace Comquer\Command;
 
 interface CommandHandler
 {
-    public function handle($command) : void;
+    public function __invoke(Command $command) : void;
 }

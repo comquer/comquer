@@ -2,8 +2,6 @@
 
 namespace Comquer\Command;
 
-use Comquer\NamedResource;
-
-interface Command extends NamedResource
+interface Command
 {
 }
