@@ -5,18 +5,15 @@ namespace Comquer\Event\Store;
 use Comquer\Event\AggregateId;
 use Comquer\Event\AggregateType;
 use Comquer\Event\Event;
+use Comquer\Event\EventCollection;
 
 interface EventStore
 {
-    public function persist(Event $event) : EventId;
+    public function persist(Event $event) : void;
 
-    public function getById(EventId $eventId) : Event;
+    public function getByQuery(array $query) : EventCollection;
 
-    public function getMany(array $query);
+    public function getByAggregateId(AggregateId $aggregateId) : Event;
 
-    public function getByAggregateId(AggregateId $aggregateId);
-
-    public function getByAggregateType(AggregateType $aggregateType);
-
-    public function exists(EventId $eventId) : bool;
+    public function getByAggregateType(AggregateType $aggregateType) : EventCollection;
 }
