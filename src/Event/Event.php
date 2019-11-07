@@ -2,8 +2,6 @@
 
 namespace Comquer\Event;
 
-use Comquer\DomainIntegration\Event\AggregateId;
-use Comquer\DomainIntegration\Event\AggregateType;
 use Comquer\Serialization\Deserializable;
 use Comquer\Serialization\Serializable;
 use DateTimeImmutable;
@@ -42,6 +40,6 @@ abstract class Event implements Serializable, Deserializable
 
     public function __toString() : string
     {
-        return $this::getEventName();
+        return self::getEventName();
     }
 }
