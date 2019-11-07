@@ -2,8 +2,10 @@
 
 namespace Comquer\Command;
 
-use Comquer\NamedResource;
-
-interface Command extends NamedResource
+abstract class Command
 {
+    public function __toString() : string
+    {
+        return get_class($this);
+    }
 }

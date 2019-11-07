@@ -2,15 +2,44 @@
 
 namespace Comquer\Event;
 
-use Comquer\NamedResource;
+use Comquer\Serialization\Deserializable;
 use Comquer\Serialization\Serializable;
 use DateTimeImmutable;
 
-interface Event extends Serializable, DeserializableEvent, NamedResource
+abstract class Event implements Serializable, Deserializable
 {
-    public function getAggregateId() : AggregateId;
+    private $aggregateId;
 
-    public function getAggregateType() : AggregateType;
+    private $aggregateType;
 
-    public function getOccurredOn() : DateTimeImmutable;
+    private $occurredOn;
+
+    abstract public static function getEventName() : string;
+
+    public function __construct(AggregateId $aggregateId, AggregateType $aggregateType, DateTimeImmutable $occurredOn)
+    {
+        $this->aggregateId = $aggregateId;
+        $this->aggregateType = $aggregateType;
+        $this->occurredOn = $occurredOn;
+    }
+
+    public function getAggregateId() : AggregateId
+    {
+        return $this->aggregateId;
+    }
+
+    public function getAggregateType() : AggregateType
+    {
+        return $this->aggregateType;
+    }
+
+    public function getOccurredOn() : DateTimeImmutable
+    {
+        return $this->occurredOn;
+    }
+
+    public function __toString() : string
+    {
+        return self::getEventName();
+    }
 }

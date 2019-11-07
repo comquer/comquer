@@ -2,7 +2,7 @@
 
 namespace Comquer\Command;
 
-interface CommandHandler
+abstract class CommandHandler
 {
-    public function handle($command) : void;
+    abstract public function __invoke(Command $command) : void;
 }
