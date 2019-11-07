@@ -1,11 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Comquer\Event\Store;
-
-use Comquer\Event\AggregateId;
-use Comquer\Event\AggregateType;
-use Comquer\Event\Event;
-use Comquer\Event\EventCollection;
+namespace Comquer\Event;
 
 interface EventStore
 {

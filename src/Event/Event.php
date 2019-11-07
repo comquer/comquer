@@ -16,11 +16,11 @@ abstract class Event implements Serializable, Deserializable
 
     abstract public static function getEventName() : string;
 
-    public function __construct(AggregateId $aggregateId, AggregateType $aggregateType, ?DateTimeImmutable $occurredOn)
+    public function __construct(AggregateId $aggregateId, AggregateType $aggregateType, DateTimeImmutable $occurredOn)
     {
         $this->aggregateId = $aggregateId;
         $this->aggregateType = $aggregateType;
-        $this->occurredOn = $occurredOn ?: new DateTimeImmutable();
+        $this->occurredOn = $occurredOn;
     }
 
     public function getAggregateId() : AggregateId
