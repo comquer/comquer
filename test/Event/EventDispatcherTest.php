@@ -2,8 +2,8 @@
 
 namespace ComquerTest\Event;
 
-use Comquer\DomainIntegration\Event\Queue\EventQueueItemPublisher;
-use Comquer\DomainIntegration\Event\Store\EventStore;
+use Comquer\Event\Queue\EventQueueItemPublisher;
+use Comquer\Event\Store\EventStore;
 use Comquer\Event\EventDispatcher;
 use Comquer\Event\Queue\EventQueueItem;
 use Comquer\Event\Subscription\EventNameSubscription;
@@ -25,7 +25,7 @@ class EventDispatcherTest extends TestCase
         );
 
         self::assertInstanceOf(
-            \Comquer\DomainIntegration\Event\EventDispatcher::class,
+            \Comquer\Event\EventDispatcher::class,
             $dispatcher
         );
     }

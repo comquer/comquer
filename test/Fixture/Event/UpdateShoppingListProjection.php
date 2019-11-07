@@ -2,8 +2,8 @@
 
 namespace ComquerTest\Fixture\Event;
 
-use Comquer\DomainIntegration\Event\Event;
-use Comquer\DomainIntegration\Event\EventListener;
+use Comquer\Event\Event;
+use Comquer\Event\EventListener;
 
 class UpdateShoppingListProjection implements EventListener
 {

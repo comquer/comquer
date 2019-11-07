@@ -2,7 +2,7 @@
 
 namespace Comquer\Event\Subscription;
 
-use Comquer\DomainIntegration\StringValue;
+use Comquer\StringValue;
 use FatCode\Enum;
 
 /**

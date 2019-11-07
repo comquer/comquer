@@ -11,7 +11,7 @@ class UserCreated extends TestEvent
         return 'user created';
     }
 
-    public function getAggregateType() : \Comquer\DomainIntegration\Event\AggregateType
+    public function getAggregateType() : \Comquer\Event\AggregateType
     {
         return new AggregateType('user');
     }

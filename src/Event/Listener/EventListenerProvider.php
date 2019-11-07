@@ -2,7 +2,7 @@
 
 namespace Comquer\Event\Listener;
 
-use Comquer\DomainIntegration\Event\EventListener;
+use Comquer\Event\EventListener;
 use Psr\Container\ContainerInterface;
 
 class EventListenerProvider

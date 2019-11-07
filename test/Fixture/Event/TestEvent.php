@@ -2,8 +2,8 @@
 
 namespace ComquerTest\Fixture\Event;
 
-use Comquer\DomainIntegration\Event\AggregateId;
-use Comquer\DomainIntegration\Event\Event;
+use Comquer\Event\AggregateId;
+use Comquer\Event\Event;
 use DateTimeImmutable;
 
 abstract class TestEvent implements Event

@@ -2,3 +2,5 @@
 .idea
 composer.lock
 .DS_Store
+.phpunit.result.cache
+coverage.clover

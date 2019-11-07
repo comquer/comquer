@@ -2,9 +2,9 @@
 
 namespace Comquer\Event\Queue;
 
-use Comquer\DomainIntegration\Event\Event;
+use Comquer\Event\Event;
 
-class EventQueueItem implements \Comquer\DomainIntegration\Event\Queue\EventQueueItem
+class EventQueueItem
 {
     /** @var Event */
     private $event;

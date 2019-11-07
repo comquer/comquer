@@ -2,14 +2,13 @@
 
 namespace Comquer\Event;
 
-use Comquer\DomainIntegration\Event\Event;
-use Comquer\DomainIntegration\Event\Queue\EventQueueItemPublisher;
-use Comquer\DomainIntegration\Event\Store\EventStore;
 use Comquer\Event\Queue\EventQueueItem;
+use Comquer\Event\Queue\EventQueueItemPublisher;
+use Comquer\Event\Store\EventStore;
 use Comquer\Event\Subscription\EventNameSubscription;
 use Comquer\Event\Subscription\EventSubscriptionProvider;
 
-class EventDispatcher implements \Comquer\DomainIntegration\Event\EventDispatcher
+class EventDispatcher
 {
     /** @var EventStore */
     private $eventStore;
