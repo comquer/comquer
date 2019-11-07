@@ -1,15 +1,14 @@
 <?php declare(strict_types=1);
 
-namespace UnicornTest\TestInfrastructure\Event\Store;
+namespace Comquer\TestVendor\Event\Store;
 
 use Comquer\Event\AggregateId;
 use Comquer\Event\AggregateType;
 use Comquer\Event\Event;
 use Comquer\Event\EventCollection;
 
-class EventStore implements \Comquer\Event\EventStore
+final class EventStore implements \Comquer\Event\EventStore
 {
-    /** @var EventCollection */
     private $eventCollection;
 
     public function __construct(EventCollection $eventCollection = null)

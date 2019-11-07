@@ -1,14 +1,13 @@
 <?php declare(strict_types=1);
 
-namespace UnicornTest\TestInfrastructure\Event\Store;
+namespace Comquer\TestVendor\Event\Store;
 
-use Unicorn\Framework\Event\EventCollection;
-use UnicornTest\TestInfrastructure\Event\Store\Fixture\EventStoreFixture;
-use UnicornTest\TestInfrastructure\Event\Store\Fixture\EventStoreFixtureCollection;
+use Comquer\Event\EventCollection;
+use Comquer\TestVendor\Event\Fixture\EventFixture;
+use Comquer\TestVendor\Event\Fixture\EventStoreFixtureCollection;
 
-class EventStoreBuilder
+final class EventStoreBuilder
 {
-    /** @var EventStoreFixtureCollection */
     private $fixtures;
 
     public function __construct(EventStoreFixtureCollection $fixtures = null)
@@ -27,7 +26,7 @@ class EventStoreBuilder
         return new EventStore($events);
     }
 
-    public function addFixture(EventStoreFixture $fixture) : self
+    public function addFixture(EventFixture $fixture) : self
     {
         $this->fixtures->add($fixture);
 
