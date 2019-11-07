@@ -7,7 +7,7 @@ use Comquer\Collection\Type;
 use Comquer\Collection\UniqueIndex;
 use Comquer\Command\Command;
 
-class CommandConfiguration extends Collection
+final class CommandConfiguration extends Collection
 {
     public function __construct(array $elements = [])
     {

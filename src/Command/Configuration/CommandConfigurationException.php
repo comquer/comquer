@@ -5,7 +5,7 @@ namespace Comquer\Command\Configuration;
 use Comquer\Command\Command;
 use RuntimeException;
 
-class CommandConfigurationException extends RuntimeException
+final class CommandConfigurationException extends RuntimeException
 {
     public static function handlerNotFound(Command $command) : self
     {

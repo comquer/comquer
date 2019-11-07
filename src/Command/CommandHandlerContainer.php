@@ -4,7 +4,7 @@ namespace Comquer\Command;
 
 use Psr\Container\ContainerInterface;
 
-class CommandHandlerContainer
+final class CommandHandlerContainer
 {
     private $container;
 

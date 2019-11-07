@@ -4,7 +4,7 @@ namespace Comquer\Command;
 
 use Comquer\Command\Configuration\CommandConfiguration;
 
-class CommandHandlerProvider
+final class CommandHandlerProvider
 {
     private $commandConfiguration;
 

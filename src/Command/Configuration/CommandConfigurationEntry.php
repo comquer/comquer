@@ -2,7 +2,7 @@
 
 namespace Comquer\Command\Configuration;
 
-class CommandConfigurationEntry
+final class CommandConfigurationEntry
 {
     private $command;
 
