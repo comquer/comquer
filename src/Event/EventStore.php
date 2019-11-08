@@ -8,7 +8,7 @@ interface EventStore
 
     public function getByQuery(array $query) : EventCollection;
 
-    public function getByAggregateId(AggregateId $aggregateId) : Event;
+    public function getByAggregateId(AggregateId $aggregateId) : EventCollection;
 
     public function getByAggregateType(AggregateType $aggregateType) : EventCollection;
 }

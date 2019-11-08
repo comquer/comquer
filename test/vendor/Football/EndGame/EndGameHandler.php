@@ -3,11 +3,22 @@
 namespace Comquer\TestVendor\Football\EndGame;
 
 use Comquer\Command\CommandHandler;
+use Comquer\TestVendor\Football\GameCommandHandler;
+use Comquer\TestVendor\Football\GameId;
 
-final class EndGameHandler extends CommandHandler
+final class EndGameHandler extends GameCommandHandler
 {
     public function __invoke(EndGame $command) : void
     {
-        // Check if game already exists
+        $this->gameMustBeOngoing($command->getGameId());
+
+        ($this->eventDispatcher)(new GameEnded($command->getGameId()));
+    }
+
+    private function gameMustBeOngoing(GameId $gameId) : void
+    {
+        if ($this->gameRepository->isGameOngoing($gameId) === false) {
+            throw EndGameException::gameIsNotOngoing($gameId);
+        }
     }
 }
