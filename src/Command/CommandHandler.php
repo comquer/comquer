@@ -13,5 +13,5 @@ abstract class CommandHandler
         $this->eventDispatcher = $eventDispatcher;
     }
 
-    abstract public function __invoke(Command $command) : void;
+//    abstract public function __invoke(Command $command) : void;
 }

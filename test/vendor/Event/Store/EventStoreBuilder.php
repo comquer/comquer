@@ -15,7 +15,7 @@ final class EventStoreBuilder
         $this->fixtures = $fixtures ?: new EventFixtureCollection();
     }
 
-    public function build() : EventStore
+    public function __invoke() : EventStore
     {
         $events = new EventCollection();
 

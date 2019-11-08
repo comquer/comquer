@@ -15,4 +15,9 @@ class Id implements StringValue
     {
         return $this->value;
     }
+
+    public static function generate() : self
+    {
+        return new static(uniqid());
+    }
 }
