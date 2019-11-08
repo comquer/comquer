@@ -8,7 +8,7 @@ final class EventCollectionException extends RuntimeException
 {
     public static function eventOfTypeNotFound(string $type): self
     {
-        return new self("Events of type `$type` was not found");
+        return new self("Event of type `$type` was not found");
     }
 
     public static function empty() : self

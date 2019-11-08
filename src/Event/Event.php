@@ -14,14 +14,14 @@ abstract class Event implements Serializable, Deserializable
 
     private $occurredOn;
 
-    abstract public static function getEventName() : string;
-
     public function __construct(AggregateId $aggregateId, AggregateType $aggregateType, DateTimeImmutable $occurredOn)
     {
         $this->aggregateId = $aggregateId;
         $this->aggregateType = $aggregateType;
         $this->occurredOn = $occurredOn;
     }
+
+    abstract public static function getEventName() : string;
 
     public function getAggregateId() : AggregateId
     {
