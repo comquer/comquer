@@ -5,7 +5,7 @@ namespace Comquer\TestVendor\Event\Fixture;
 use Comquer\Collection\Collection;
 use Comquer\Collection\Type;
 
-final class EventStoreFixtureCollection extends Collection
+final class EventFixtureCollection extends Collection
 {
     public function __construct(array $fixtures = [])
     {

@@ -4,15 +4,15 @@ namespace Comquer\TestVendor\Event\Store;
 
 use Comquer\Event\EventCollection;
 use Comquer\TestVendor\Event\Fixture\EventFixture;
-use Comquer\TestVendor\Event\Fixture\EventStoreFixtureCollection;
+use Comquer\TestVendor\Event\Fixture\EventFixtureCollection;
 
 final class EventStoreBuilder
 {
     private $fixtures;
 
-    public function __construct(EventStoreFixtureCollection $fixtures = null)
+    public function __construct(EventFixtureCollection $fixtures = null)
     {
-        $this->fixtures = $fixtures ?: new EventStoreFixtureCollection();
+        $this->fixtures = $fixtures ?: new EventFixtureCollection();
     }
 
     public function build() : EventStore
