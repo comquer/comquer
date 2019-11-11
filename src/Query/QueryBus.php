@@ -13,7 +13,8 @@ final class QueryBus
 
     public function __invoke(Query $query)
     {
-        $commandHandler = ($this->handlerProvider)($query);
-        $commandHandler($query);
+        $queryHandler = ($this->handlerProvider)($query);
+
+        return $queryHandler($query);
     }
 }
