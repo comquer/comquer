@@ -2,7 +2,6 @@
 
 namespace Comquer\Query;
 
-interface QueryHandler
+abstract class QueryHandler
 {
-    public function handle($query);
 }

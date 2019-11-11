@@ -2,30 +2,18 @@
 
 namespace Comquer\Query;
 
-use Comquer\HandlerProvider;
-
-class QueryBus
+final class QueryBus
 {
-    /** @var RegisteredQueries */
-    private $registeredQueries;
-
-    /** @var HandlerProvider */
     private $handlerProvider;
 
-    public function __construct(RegisteredQueries $registeredQueries, HandlerProvider $handlerProvider)
+    public function __construct(QueryHandlerProvider $handlerProvider)
     {
-        $this->registeredQueries = $registeredQueries;
         $this->handlerProvider = $handlerProvider;
     }
 
-    public function handle($query)
+    public function __invoke(Query $query)
     {
-        $this->registeredQueries->mustContain($query);
-
-        $handler = $this->handlerProvider->get(
-            $this->registeredQueries->getHandlerClassName($query)
-        );
-
-        return $handler->handle($query);
+        $commandHandler = ($this->handlerProvider)($query);
+        $commandHandler($query);
     }
 }
