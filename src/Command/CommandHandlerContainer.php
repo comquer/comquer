@@ -6,6 +6,7 @@ use Psr\Container\ContainerInterface;
 
 final class CommandHandlerContainer
 {
+    /** @var ContainerInterface */
     private $container;
 
     public function __construct(ContainerInterface $container)

@@ -6,6 +6,7 @@ use Comquer\Event\EventDispatcher;
 
 abstract class CommandHandler
 {
+    /** @var EventDispatcher */
     protected $eventDispatcher;
 
     public function __construct(EventDispatcher $eventDispatcher)

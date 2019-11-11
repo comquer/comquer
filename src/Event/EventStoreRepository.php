@@ -2,8 +2,6 @@
 
 namespace Comquer\Event;
 
-use Comquer\Event\EventStore;
-
 abstract class EventStoreRepository
 {
     protected $eventStore;

@@ -4,8 +4,10 @@ namespace Comquer\Command\Configuration;
 
 final class CommandConfigurationEntry
 {
+    /** @var string */
     private $command;
 
+    /** @var string */
     private $commandHandler;
 
     public function __construct(string $command, string $commandHandler)

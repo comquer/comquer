@@ -4,6 +4,7 @@ namespace Comquer;
 
 class Id implements StringValue
 {
+    /** @var string */
     private $value;
 
     public function __construct(string $value)
