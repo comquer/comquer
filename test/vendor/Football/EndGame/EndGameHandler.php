@@ -2,7 +2,6 @@
 
 namespace Comquer\TestVendor\Football\EndGame;
 
-use Comquer\Command\CommandHandler;
 use Comquer\TestVendor\Football\GameCommandHandler;
 use Comquer\TestVendor\Football\GameId;
 
@@ -18,7 +17,7 @@ final class EndGameHandler extends GameCommandHandler
     private function gameMustBeOngoing(GameId $gameId) : void
     {
         if ($this->gameRepository->isGameOngoing($gameId) === false) {
-            throw EndGameException::gameIsNotOngoing($gameId);
+            throw EndGameException::gameNotOngoing($gameId);
         }
     }
 }

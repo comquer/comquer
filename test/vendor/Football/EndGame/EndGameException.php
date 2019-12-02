@@ -7,7 +7,7 @@ use RuntimeException;
 
 class EndGameException extends RuntimeException
 {
-    public static function gameIsNotOngoing(GameId $gameId) : self
+    public static function gameNotOngoing(GameId $gameId) : self
     {
         return new self("Game `$gameId` is not ongoing");
     }

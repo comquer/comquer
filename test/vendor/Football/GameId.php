@@ -4,7 +4,8 @@ namespace Comquer\TestVendor\Football;
 
 use Comquer\Event\AggregateId;
 use Comquer\Id;
+use Comquer\Projection\ProjectionId;
 
-class GameId extends Id implements AggregateId
+class GameId extends Id implements AggregateId, ProjectionId
 {
 }

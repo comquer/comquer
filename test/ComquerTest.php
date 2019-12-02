@@ -17,7 +17,6 @@ use PHPUnit\Framework\TestCase;
 
 abstract class ComquerTest extends TestCase
 {
-    /** @var EventStore */
     protected $eventStore;
 
     public function setUp() : void
@@ -32,6 +31,8 @@ abstract class ComquerTest extends TestCase
         foreach ($fixture() as $event) {
             $this->eventStore->persist($event);
         }
+
+        return $this;
     }
 
     protected function buildCommandConfiguration() : CommandConfiguration
