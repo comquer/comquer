@@ -4,11 +4,9 @@ namespace Comquer\Query\Configuration;
 
 class QueryConfigurationEntry
 {
-    /** @var string */
-    private $query;
+    private string $query;
 
-    /** @var string */
-    private $queryHandler;
+    private string $queryHandler;
 
     public function __construct(string $query, string $queryHandler)
     {

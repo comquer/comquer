@@ -4,7 +4,7 @@ namespace Comquer\Event;
 
 abstract class EventStoreRepository
 {
-    protected $eventStore;
+    protected EventStore $eventStore;
 
     public function __construct(EventStore $eventStore)
     {

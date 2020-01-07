@@ -4,7 +4,7 @@ namespace Comquer\Query;
 
 final class QueryBus
 {
-    private $handlerProvider;
+    private QueryHandlerProvider $handlerProvider;
 
     public function __construct(QueryHandlerProvider $handlerProvider)
     {

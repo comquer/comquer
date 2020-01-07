@@ -6,11 +6,9 @@ use Comquer\Command\Configuration\CommandConfiguration;
 
 final class CommandHandlerProvider
 {
-    /** @var CommandConfiguration */
-    private $commandConfiguration;
+    private CommandConfiguration $commandConfiguration;
 
-    /** @var CommandHandlerContainer */
-    private $commandHandlerContainer;
+    private CommandHandlerContainer $commandHandlerContainer;
 
     public function __construct(CommandConfiguration $commandConfiguration, CommandHandlerContainer $commandHandlerContainer)
     {

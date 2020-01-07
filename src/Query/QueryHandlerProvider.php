@@ -7,11 +7,9 @@ use Comquer\Query\Configuration\QueryConfiguration;
 
 final class QueryHandlerProvider
 {
-    /** @var QueryConfiguration */
-    private $queryConfiguration;
+    private QueryConfiguration $queryConfiguration;
 
-    /** @var QueryHandlerContainer */
-    private $queryHandlerContainer;
+    private QueryHandlerContainer $queryHandlerContainer;
 
     public function __construct(QueryConfiguration $queryConfiguration, QueryHandlerContainer $queryHandlerContainer)
     {

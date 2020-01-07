@@ -6,13 +6,12 @@ use Comquer\Event\EventDispatcher;
 
 abstract class CommandHandler
 {
-    /** @var EventDispatcher */
-    protected $eventDispatcher;
+    protected EventDispatcher $eventDispatcher;
 
     public function __construct(EventDispatcher $eventDispatcher)
     {
         $this->eventDispatcher = $eventDispatcher;
     }
 
-//    abstract public function __invoke(Command $command) : void;
+    abstract public function __invoke(Command $command) : void;
 }

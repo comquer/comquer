@@ -4,8 +4,7 @@ namespace Comquer\Command;
 
 final class CommandBus
 {
-    /** @var CommandHandlerProvider */
-    private $commandHandlerProvider;
+    private CommandHandlerProvider $commandHandlerProvider;
 
     public function __construct(CommandHandlerProvider $handlerProvider)
     {

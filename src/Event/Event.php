@@ -8,14 +8,11 @@ use DateTimeImmutable;
 
 abstract class Event implements Serializable, Deserializable
 {
-    /** @var AggregateId */
-    private $aggregateId;
+    private AggregateId $aggregateId;
 
-    /** @var AggregateType */
-    private $aggregateType;
+    private AggregateType $aggregateType;
 
-    /** @var DateTimeImmutable */
-    private $occurredOn;
+    private DateTimeImmutable $occurredOn;
 
     public function __construct(AggregateId $aggregateId, AggregateType $aggregateType, DateTimeImmutable $occurredOn)
     {
