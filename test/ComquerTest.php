@@ -17,7 +17,7 @@ use PHPUnit\Framework\TestCase;
 
 abstract class ComquerTest extends TestCase
 {
-    protected $eventStore;
+    protected EventStore $eventStore;
 
     public function setUp() : void
     {

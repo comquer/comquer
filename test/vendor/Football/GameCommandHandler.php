@@ -7,7 +7,7 @@ use Comquer\TestVendor\Event\EventDispatcher;
 
 abstract class GameCommandHandler extends CommandHandler
 {
-    protected $gameRepository;
+    protected GameRepository $gameRepository;
 
     public function __construct(GameRepository $gameRepository, EventDispatcher $eventDispatcher)
     {
