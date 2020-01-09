@@ -2,9 +2,9 @@
 
 namespace Comquer\Test\Command;
 
-use Comquer\Command\CommandHandler;
-use Comquer\Command\CommandHandlerContainer;
-use Comquer\Event\EventStore;
+use Comquer\WriteModel\Command\CommandHandler;
+use Comquer\WriteModel\Command\CommandHandlerContainer;
+use Comquer\ReadModel\Event\EventStore;
 use Comquer\Test\ContainerFactory;
 use Comquer\TestVendor\Event\EventDispatcher;
 use Comquer\TestVendor\Football\EndGame\EndGameHandler;

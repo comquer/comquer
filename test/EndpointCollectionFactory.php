@@ -2,7 +2,7 @@
 
 namespace Comquer\Test;
 
-use Comquer\Application\EndpointCollection;
+use Comquer\WriteModel\Http\EndpointCollection;
 
 interface EndpointCollectionFactory
 {

@@ -2,7 +2,7 @@
 
 namespace Comquer\TestVendor\Event\Fixture;
 
-use Comquer\Event\EventCollection;
+use Comquer\ReadModel\Event\EventCollection;
 
 interface EventFixture
 {

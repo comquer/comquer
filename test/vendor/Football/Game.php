@@ -2,7 +2,7 @@
 
 namespace Comquer\TestVendor\Football;
 
-use Comquer\Projection\Projection;
+use Comquer\ReadModel\Projection\Projection;
 use DateTimeImmutable;
 
 final class Game implements Projection

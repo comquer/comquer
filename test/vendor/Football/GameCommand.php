@@ -2,7 +2,7 @@
 
 namespace Comquer\TestVendor\Football;
 
-use Comquer\Command\Command;
+use Comquer\WriteModel\Command\Command;
 
 abstract class GameCommand extends Command
 {

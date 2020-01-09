@@ -2,10 +2,10 @@
 
 namespace Comquer\TestVendor\Event;
 
-use Comquer\Event\Event;
-use Comquer\Event\EventStore;
+use Comquer\ReadModel\Event\Event;
+use Comquer\ReadModel\Event\EventStore;
 
-class EventDispatcher implements \Comquer\Event\EventDispatcher
+class EventDispatcher implements \Comquer\ReadModel\Event\EventDispatcher
 {
     private $eventStore;
 

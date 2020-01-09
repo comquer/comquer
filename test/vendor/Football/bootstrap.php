@@ -3,24 +3,24 @@
 namespace Comquer\TestVendor\Football;
 
 use Comquer\Application\Application;
-use Comquer\Command\Command;
-use Comquer\Http\WriteModel\Endpoint;
-use Comquer\Http\WriteModel\Hydrator;
-use Comquer\Http\WriteModel\PostRequest;
+use Comquer\WriteModel\Command\Command;
+use Comquer\ReadModel\Http\WriteModel\Endpoint;
+use Comquer\ReadModel\Http\WriteModel\RequestHydrator;
+use Comquer\ReadModel\Http\WriteModel\PostRequest;
 use Comquer\TestVendor\Football\EndGame\EndGame;
 use Comquer\TestVendor\Football\StartGame\StartGame;
 
 function bootstrapApplication() : Application {
     $application = new Application();
 
-    $application->registerEndpoint(new Endpoint('start-game', new class implements Hydrator {
+    $application->registerEndpoint(new Endpoint('start-game', new class implements RequestHydrator {
         public function __invoke(PostRequest $request) : Command
         {
             return new StartGame(GameId::generate());
         }
     }));
 
-    $application->registerEndpoint(new Endpoint('end-game', new class implements Hydrator {
+    $application->registerEndpoint(new Endpoint('end-game', new class implements RequestHydrator {
         public function __invoke(PostRequest $request) : Command
         {
             $gameId = new GameId($request->getParameter('gameId'));

@@ -2,8 +2,8 @@
 
 namespace Comquer\Test\Command;
 
-use Comquer\Command\CommandBus;
-use Comquer\Command\CommandHandlerProvider;
+use Comquer\WriteModel\Command\CommandBus;
+use Comquer\WriteModel\Command\CommandHandlerProvider;
 use Comquer\Test\ComquerTest;
 use Comquer\TestVendor\Football\GameId;
 use Comquer\TestVendor\Football\StartGame\StartGame;

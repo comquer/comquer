@@ -2,7 +2,7 @@
 
 namespace Comquer\TestVendor\Football;
 
-use Comquer\Event\EventStoreRepository;
+use Comquer\ReadModel\Event\EventStoreRepository;
 use Comquer\TestVendor\Football\EndGame\GameEnded;
 use Comquer\TestVendor\Football\StartGame\GameStarted;
 

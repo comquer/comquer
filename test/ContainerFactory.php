@@ -2,7 +2,7 @@
 
 namespace Comquer\Test;
 
-use Comquer\Event\EventStore;
+use Comquer\ReadModel\Event\EventStore;
 
 interface ContainerFactory
 {

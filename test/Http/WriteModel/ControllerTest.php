@@ -2,8 +2,8 @@
 
 namespace Comquer\Test\Http\WriteModel;
 
-use Comquer\Http\WriteModel\CommandFactory;
-use Comquer\Http\WriteModel\Controller;
+use Comquer\ReadModel\Http\WriteModel\CommandFactory;
+use Comquer\ReadModel\Http\WriteModel\Controller;
 use PHPUnit\Framework\TestCase;
 use function Comquer\TestVendor\Football\bootstrapApplication;
 

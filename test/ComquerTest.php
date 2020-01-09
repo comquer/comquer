@@ -2,10 +2,10 @@
 
 namespace Comquer\Test;
 
-use Comquer\Command\CommandHandlerContainer;
-use Comquer\Command\Configuration\CommandConfiguration;
-use Comquer\Command\Configuration\CommandConfigurationEntry;
-use Comquer\Event\Event;
+use Comquer\WriteModel\Command\CommandHandlerContainer;
+use Comquer\WriteModel\Command\Configuration\CommandConfiguration;
+use Comquer\WriteModel\Command\Configuration\CommandConfigurationEntry;
+use Comquer\ReadModel\Event\Event;
 use Comquer\Test\Command\CommandHandlerContainerFactory;
 use Comquer\TestVendor\Event\Fixture\EventFixture;
 use Comquer\TestVendor\Event\Store\EventStore;

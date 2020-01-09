@@ -2,8 +2,8 @@
 
 namespace Comquer\TestVendor\Football;
 
-use Comquer\Event\AggregateType;
-use Comquer\Event\Event;
+use Comquer\ReadModel\Event\AggregateType;
+use Comquer\ReadModel\Event\Event;
 use DateTimeImmutable;
 
 abstract class GameEvent extends Event

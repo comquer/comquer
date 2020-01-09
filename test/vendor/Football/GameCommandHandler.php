@@ -2,7 +2,7 @@
 
 namespace Comquer\TestVendor\Football;
 
-use Comquer\Command\CommandHandler;
+use Comquer\WriteModel\Command\CommandHandler;
 use Comquer\TestVendor\Event\EventDispatcher;
 
 abstract class GameCommandHandler extends CommandHandler

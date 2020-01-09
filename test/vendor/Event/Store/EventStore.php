@@ -2,12 +2,12 @@
 
 namespace Comquer\TestVendor\Event\Store;
 
-use Comquer\Event\AggregateId;
-use Comquer\Event\AggregateType;
-use Comquer\Event\Event;
-use Comquer\Event\EventCollection;
+use Comquer\ReadModel\Event\AggregateId;
+use Comquer\ReadModel\Event\AggregateType;
+use Comquer\ReadModel\Event\Event;
+use Comquer\ReadModel\Event\EventCollection;
 
-final class EventStore implements \Comquer\Event\EventStore
+final class EventStore implements \Comquer\ReadModel\Event\EventStore
 {
     private $eventCollection;
 

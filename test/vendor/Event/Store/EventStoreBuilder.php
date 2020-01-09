@@ -2,7 +2,7 @@
 
 namespace Comquer\TestVendor\Event\Store;
 
-use Comquer\Event\EventCollection;
+use Comquer\ReadModel\Event\EventCollection;
 use Comquer\TestVendor\Event\Fixture\EventFixture;
 use Comquer\TestVendor\Event\Fixture\EventFixtureCollection;
 
