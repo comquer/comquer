@@ -23,7 +23,8 @@
     },
     "require": {
         "comquer/collection": "dev-master",
-        "psr/container": "^1.0@dev"
+        "psr/container": "^1.0@dev",
+        "psr/http-message": "^1.0@dev"
     },
     "require-dev": {
         "phpunit/phpunit": "^8.0",
