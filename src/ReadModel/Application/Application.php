@@ -1,8 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace Comquer\Application;
+namespace Comquer\ReadModel\Application;
 
 use Comquer\ReadModel\Http\EndpointCollection;
+use Comquer\WriteModel\Http\Endpoint;
 
 class Application
 {
@@ -18,17 +19,8 @@ class Application
         $this->endpoints->add($endpoint);
     }
 
-    public function getWriteModelEndpoints() : EndpointCollection
+    public function getEndpoints(): EndpointCollection
     {
-        return $this->endpoints->filter(function (Endpoint $endpoint) {
-            return $endpoint->getModel()->isWrite();
-        });
-    }
-
-    public function getReadModelEndpoints() : EndpointCollection
-    {
-        return $this->endpoints->filter(function (Endpoint $endpoint) {
-            return $endpoint->getModel()->isRead();
-        });
+        return $this->endpoints;
     }
 }

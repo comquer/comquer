@@ -2,16 +2,23 @@
 
 namespace Comquer\WriteModel\Application;
 
-
+use Comquer\WriteModel\Command\Configuration\CommandConfiguration;
+use Comquer\WriteModel\Command\Configuration\CommandConfigurationEntry;
+use Comquer\WriteModel\Http\Endpoint;
 use Comquer\WriteModel\Http\EndpointCollection;
 
 class Application
 {
     private EndpointCollection $endpoints;
 
-    public function __construct(EndpointCollection $endpoints = null)
-    {
+    private CommandConfiguration $commands;
+
+    public function __construct(
+        EndpointCollection $endpoints = null,
+        CommandConfiguration $commands = null
+    ) {
         $this->endpoints = $endpoints ?? new EndpointCollection();
+        $this->commands = $commands ?? new CommandConfiguration();
     }
 
     public function registerEndpoint(Endpoint $endpoint) : void
@@ -19,17 +26,18 @@ class Application
         $this->endpoints->add($endpoint);
     }
 
-    public function getWriteModelEndpoints() : EndpointCollection
+    public function getEndpoints() : EndpointCollection
     {
-        return $this->endpoints->filter(function (Endpoint $endpoint) {
-            return $endpoint->getModel()->isWrite();
-        });
+        return $this->endpoints;
     }
 
-    public function getReadModelEndpoints() : EndpointCollection
+    public function registerCommand(CommandConfigurationEntry $command) : void
     {
-        return $this->endpoints->filter(function (Endpoint $endpoint) {
-            return $endpoint->getModel()->isRead();
-        });
+        $this->commands->add($command);
+    }
+
+    public function getCommands() : CommandConfiguration
+    {
+        return $this->commands;
     }
 }
