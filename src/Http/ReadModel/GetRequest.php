@@ -1,6 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace Comquer\Http\Request;
+namespace Comquer\Http\ReadModel;
+
+use Comquer\Http\Method;
+use Comquer\Http\Request;
 
 class GetRequest implements Request
 {

@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Comquer\Http\Request;
+namespace Comquer\Http;
 
 final class Method
 {

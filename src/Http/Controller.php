@@ -7,6 +7,7 @@ use Psr\Http\Message\RequestInterface as HttpRequest;
 use Psr\Http\Message\ResponseInterface as HttpResponse;
 use Throwable;
 
+/** @deprecated */
 class Controller
 {
     private CommandBus $commandBus;
