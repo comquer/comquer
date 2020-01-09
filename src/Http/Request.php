@@ -2,9 +2,27 @@
 
 namespace Comquer\Http;
 
-interface Request
+abstract class Request
 {
-    public function getMethod() : Method;
+    private string $route;
 
-    public function getRoute() : string;
+    private ParameterCollection $parameters;
+
+    public function __construct(string $route, ParameterCollection $parameters = null)
+    {
+        $this->route = $route;
+        $this->parameters = $parameters ?? new ParameterCollection();
+    }
+
+    public function getRoute() : string
+    {
+        return $this->route;
+    }
+
+    public function getParameter(string $parameterName) : Parameter
+    {
+        return $this->parameters->get($parameterName);
+    }
+
+    abstract public function getMethod() : Method;
 }

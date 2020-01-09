@@ -6,7 +6,7 @@ use Comquer\Command\Command;
 
 abstract class GameCommand extends Command
 {
-    private $gameId;
+    private GameId $gameId;
 
     public function __construct(GameId $gameId)
     {

@@ -18,8 +18,17 @@ class Application
         $this->endpoints->add($endpoint);
     }
 
-    public function getEndpoints() : EndpointCollection
+    public function getWriteModelEndpoints() : EndpointCollection
     {
-        return $this->endpoints;
+        return $this->endpoints->filter(function (Endpoint $endpoint) {
+            return $endpoint->getModel()->isWrite();
+        });
+    }
+
+    public function getReadModelEndpoints() : EndpointCollection
+    {
+        return $this->endpoints->filter(function (Endpoint $endpoint) {
+            return $endpoint->getModel()->isRead();
+        });
     }
 }

@@ -25,4 +25,14 @@ final class Model
     {
         return $this->model;
     }
+
+    public function isRead() : bool
+    {
+        return (string) $this === (string) Model::read();
+    }
+
+    public function isWrite() : bool
+    {
+        return (string) $this === (string) Model::write();
+    }
 }
