@@ -1,7 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace Comquer\TestVendor\Football;
+namespace Comquer\TestVendor\Football\WriteModel;
 
+use Comquer\TestVendor\Football\ReadModel\GameId;
 use Comquer\WriteModel\Command\Command;
 
 abstract class GameCommand extends Command

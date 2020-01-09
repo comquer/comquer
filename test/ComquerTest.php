@@ -9,10 +9,10 @@ use Comquer\ReadModel\Event\Event;
 use Comquer\Test\WriteModel\Command\CommandHandlerContainerFactory;
 use Comquer\TestVendor\Event\Fixture\EventFixture;
 use Comquer\TestVendor\Event\Store\EventStore;
-use Comquer\TestVendor\Football\EndGame\EndGame;
-use Comquer\TestVendor\Football\EndGame\EndGameHandler;
-use Comquer\TestVendor\Football\StartGame\StartGame;
-use Comquer\TestVendor\Football\StartGame\StartGameHandler;
+use Comquer\TestVendor\Football\WriteModel\EndGame\EndGame;
+use Comquer\TestVendor\Football\WriteModel\EndGame\EndGameHandler;
+use Comquer\TestVendor\Football\WriteModel\StartGame\StartGame;
+use Comquer\TestVendor\Football\WriteModel\StartGame\StartGameHandler;
 use PHPUnit\Framework\TestCase;
 
 abstract class ComquerTest extends TestCase

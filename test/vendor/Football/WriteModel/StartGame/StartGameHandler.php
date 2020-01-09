@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace Comquer\TestVendor\Football\StartGame;
+namespace Comquer\TestVendor\Football\WriteModel\StartGame;
 
-use Comquer\TestVendor\Football\GameCommandHandler;
-use Comquer\TestVendor\Football\GameId;
+use Comquer\TestVendor\Football\WriteModel\GameCommandHandler;
+use Comquer\TestVendor\Football\ReadModel\GameId;
 
 final class StartGameHandler extends GameCommandHandler
 {

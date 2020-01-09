@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Comquer\TestVendor\Football;
+namespace Comquer\TestVendor\Football\ReadModel;
 
 use Comquer\ReadModel\Event\AggregateId;
 use Comquer\Id;

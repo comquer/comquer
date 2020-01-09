@@ -2,9 +2,10 @@
 
 namespace Comquer\TestVendor\Football;
 
+use Comquer\TestVendor\Football\ReadModel\GameId;
 use Comquer\WriteModel\Command\Command;
-use Comquer\TestVendor\Football\EndGame\EndGame;
-use Comquer\TestVendor\Football\StartGame\StartGame;
+use Comquer\TestVendor\Football\WriteModel\EndGame\EndGame;
+use Comquer\TestVendor\Football\WriteModel\StartGame\StartGame;
 
 function bootstrapApplication() : Application {
     $application = new Application();

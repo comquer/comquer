@@ -7,9 +7,9 @@ use Comquer\WriteModel\Command\CommandHandlerContainer;
 use Comquer\ReadModel\Event\EventStore;
 use Comquer\Test\ContainerFactory;
 use Comquer\TestVendor\Event\EventDispatcher;
-use Comquer\TestVendor\Football\EndGame\EndGameHandler;
-use Comquer\TestVendor\Football\GameRepository;
-use Comquer\TestVendor\Football\StartGame\StartGameHandler;
+use Comquer\TestVendor\Football\WriteModel\EndGame\EndGameHandler;
+use Comquer\TestVendor\Football\ReadModel\GameRepository;
+use Comquer\TestVendor\Football\WriteModel\StartGame\StartGameHandler;
 use InvalidArgumentException;
 use Psr\Container\ContainerInterface;
 

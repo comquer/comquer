@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Comquer\TestVendor\Football;
+namespace Comquer\TestVendor\Football\ReadModel;
 
 use Comquer\ReadModel\Event\AggregateType;
 use Comquer\ReadModel\Event\Event;
@@ -8,8 +8,6 @@ use DateTimeImmutable;
 
 abstract class GameEvent extends Event
 {
-    private $gameId;
-
     public function __construct(GameId $gameId, DateTimeImmutable $occurredOn = null)
     {
         parent::__construct(
@@ -22,7 +20,7 @@ abstract class GameEvent extends Event
     public function serialize() : array
     {
         return [
-            'gameId' => (string) $this->gameId,
+            'gameId' => (string) $this->getAggregateId(),
             'aggregateId' => (string) $this->getAggregateId(),
             'aggregateType' => (string) $this->getAggregateType(),
             'occurredOn' => $this->getOccurredOn()->getTimestamp(),

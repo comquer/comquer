@@ -5,9 +5,9 @@ namespace Comquer\Test\WriteModel\Command;
 use Comquer\WriteModel\Command\CommandBus;
 use Comquer\WriteModel\Command\CommandHandlerProvider;
 use Comquer\Test\ComquerTest;
-use Comquer\TestVendor\Football\GameId;
-use Comquer\TestVendor\Football\StartGame\StartGame;
-use Comquer\TestVendor\Football\StartGame\StartGameException;
+use Comquer\TestVendor\Football\ReadModel\GameId;
+use Comquer\TestVendor\Football\WriteModel\StartGame\StartGame;
+use Comquer\TestVendor\Football\WriteModel\StartGame\StartGameException;
 
 class CommandBusTest extends ComquerTest
 {
