@@ -2,7 +2,7 @@
 
 namespace Comquer\WriteModel\Command;
 
-use Comquer\ReadModel\Event\EventDispatcher;
+use Comquer\WriteModel\Event\EventDispatcher;
 
 abstract class CommandHandler
 {

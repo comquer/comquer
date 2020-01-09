@@ -7,9 +7,9 @@ use Comquer\ReadModel\Event\AggregateType;
 use Comquer\ReadModel\Event\Event;
 use Comquer\ReadModel\Event\EventCollection;
 
-final class EventStore implements \Comquer\ReadModel\Event\EventStore
+final class EventStore implements \Comquer\WriteModel\Event\EventStore
 {
-    private $eventCollection;
+    private EventCollection $eventCollection;
 
     public function __construct(EventCollection $eventCollection = null)
     {

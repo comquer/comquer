@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Comquer\Test\Command;
+namespace Comquer\Test\WriteModel\Command;
 
 use Comquer\WriteModel\Command\CommandBus;
 use Comquer\WriteModel\Command\CommandHandlerProvider;

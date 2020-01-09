@@ -6,7 +6,7 @@ use Comquer\WriteModel\Command\CommandHandlerContainer;
 use Comquer\WriteModel\Command\Configuration\CommandConfiguration;
 use Comquer\WriteModel\Command\Configuration\CommandConfigurationEntry;
 use Comquer\ReadModel\Event\Event;
-use Comquer\Test\Command\CommandHandlerContainerFactory;
+use Comquer\Test\WriteModel\Command\CommandHandlerContainerFactory;
 use Comquer\TestVendor\Event\Fixture\EventFixture;
 use Comquer\TestVendor\Event\Store\EventStore;
 use Comquer\TestVendor\Football\EndGame\EndGame;

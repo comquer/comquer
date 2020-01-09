@@ -3,11 +3,11 @@
 namespace Comquer\TestVendor\Event;
 
 use Comquer\ReadModel\Event\Event;
-use Comquer\ReadModel\Event\EventStore;
+use Comquer\WriteModel\Event\EventStore;
 
-class EventDispatcher implements \Comquer\ReadModel\Event\EventDispatcher
+class EventDispatcher implements \Comquer\WriteModel\Event\EventDispatcher
 {
-    private $eventStore;
+    private EventStore $eventStore;
 
     public function __construct(EventStore $eventStore)
     {

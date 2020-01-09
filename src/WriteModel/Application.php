@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Comquer\WriteModel\Application;
+namespace Comquer\WriteModel;
 
 use Comquer\WriteModel\Command\Configuration\CommandConfiguration;
 use Comquer\WriteModel\Command\Configuration\CommandConfigurationEntry;

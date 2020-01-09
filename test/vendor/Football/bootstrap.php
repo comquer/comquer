@@ -2,11 +2,7 @@
 
 namespace Comquer\TestVendor\Football;
 
-use Comquer\Application\Application;
 use Comquer\WriteModel\Command\Command;
-use Comquer\ReadModel\Http\WriteModel\Endpoint;
-use Comquer\ReadModel\Http\WriteModel\RequestHydrator;
-use Comquer\ReadModel\Http\WriteModel\PostRequest;
 use Comquer\TestVendor\Football\EndGame\EndGame;
 use Comquer\TestVendor\Football\StartGame\StartGame;
 
