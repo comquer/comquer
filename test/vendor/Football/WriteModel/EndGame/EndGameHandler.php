@@ -7,7 +7,7 @@ use Comquer\TestVendor\Football\ReadModel\GameId;
 
 final class EndGameHandler extends GameCommandHandler
 {
-    public function __invoke(EndGame $command) : void
+    public function __invoke(\Comquer\WriteModel\Command\Command $command) : void
     {
         $this->gameMustBeOngoing($command->getGameId());
 

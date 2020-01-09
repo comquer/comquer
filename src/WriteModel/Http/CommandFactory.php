@@ -2,6 +2,7 @@
 
 namespace Comquer\ReadModel\Http\WriteModel;
 
+use Comquer\ReadModel\Http\Request;
 use Comquer\WriteModel\Http\Endpoint;
 use Comquer\WriteModel\Http\EndpointCollection;
 use Comquer\WriteModel\Command\Command;

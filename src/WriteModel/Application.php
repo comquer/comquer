@@ -2,23 +2,21 @@
 
 namespace Comquer\WriteModel;
 
-use Comquer\WriteModel\Command\Configuration\CommandConfiguration;
+use Comquer\WriteModel\Command\CommandBus;
 use Comquer\WriteModel\Command\Configuration\CommandConfigurationEntry;
 use Comquer\WriteModel\Http\Endpoint;
 use Comquer\WriteModel\Http\EndpointCollection;
 
 class Application
 {
+    private CommandBus $commandBus;
+
     private EndpointCollection $endpoints;
 
-    private CommandConfiguration $commands;
-
-    public function __construct(
-        EndpointCollection $endpoints = null,
-        CommandConfiguration $commands = null
-    ) {
+    public function __construct(CommandBus $commandBus, EndpointCollection $endpoints = null)
+    {
+        $this->commandBus = $commandBus;
         $this->endpoints = $endpoints ?? new EndpointCollection();
-        $this->commands = $commands ?? new CommandConfiguration();
     }
 
     public function registerEndpoint(Endpoint $endpoint) : void
@@ -36,8 +34,8 @@ class Application
         $this->commands->add($command);
     }
 
-    public function getCommands() : CommandConfiguration
+    public function getCommandBus() : CommandBus
     {
-        return $this->commands;
+
     }
 }

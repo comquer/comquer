@@ -2,6 +2,8 @@
 
 namespace Comquer\WriteModel\Http;
 
+use Comquer\ReadModel\Http\Request;
+use Comquer\ReadModel\Http\WriteModel\CommandFactory;
 use Comquer\WriteModel\Command\CommandBus;
 use Throwable;
 
@@ -24,9 +26,9 @@ class Controller
         try {
             ($this->commandBus)($command);
         } catch (Throwable $exception) {
-            return ErrorResponse::fromException($exception);
+            return Response::fromException($exception);
         }
 
-        return HttpResponse::forSuccessfulCommand($command);
+        return Response::fromCommand($command);
     }
 }
