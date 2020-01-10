@@ -1,10 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace Comquer\ReadModel\Http\WriteModel;
+namespace Comquer\WriteModel\Http;
 
 use Comquer\ReadModel\Http\Request;
-use Comquer\WriteModel\Http\Endpoint;
-use Comquer\WriteModel\Http\EndpointCollection;
 use Comquer\WriteModel\Command\Command;
 
 class CommandFactory

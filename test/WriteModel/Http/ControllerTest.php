@@ -2,22 +2,22 @@
 
 namespace Comquer\Test\WriteModel\Http;
 
-use Comquer\ReadModel\Http\WriteModel\CommandFactory;
+use Comquer\ReadModel\Http\Request;
+use Comquer\TestVendor\Football\WriteModel\Bootstrap;
 use Comquer\WriteModel\Http\Controller;
+use Comquer\WriteModel\Http\Response;
 use PHPUnit\Framework\TestCase;
-
-use function Comquer\TestVendor\Football\WriteModel\bootstrap;
 
 class ControllerTest extends TestCase
 {
     /** @test */
     function handle_request()
     {
-        $application = bootstrap();
+        $container = (new Bootstrap())();
+        $controller = $container->get(Controller::class);
 
-        $controller = new Controller(
-            new CommandFactory($application->getEndpoints()),
-            $application->getCommandBus()
-        );
+        $response = $controller(new Request('start-game'));
+
+        self::assertInstanceOf(Response::class, $response);
     }
 }

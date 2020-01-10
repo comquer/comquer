@@ -3,7 +3,6 @@
 namespace Comquer\WriteModel\Http;
 
 use Comquer\ReadModel\Http\Request;
-use Comquer\ReadModel\Http\WriteModel\CommandFactory;
 use Comquer\WriteModel\Command\CommandBus;
 use Throwable;
 

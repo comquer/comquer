@@ -1,13 +1,13 @@
 {
     "name": "comquer/comquer",
-    "description": "CQRS and Event Sourcing Framework",
+    "description": "Event Sourced PHP Framework",
     "version": "dev-master",
     "minimum-stability": "dev",
     "type": "library",
     "authors": [
         {
             "name": "Jakub Giminski",
-            "email": "jakub@giminski.com"
+            "email": "jakubgiminski@gmail.com"
         }
     ],
     "autoload": {
@@ -24,7 +24,8 @@
     "require": {
         "comquer/collection": "dev-master",
         "psr/container": "^1.0@dev",
-        "psr/http-message": "^1.0@dev"
+        "psr/http-message": "dev-master",
+        "php-di/php-di": "dev-master"
     },
     "require-dev": {
         "phpunit/phpunit": "^8.0",

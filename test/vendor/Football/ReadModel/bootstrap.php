@@ -1,8 +1,7 @@
 <?php declare(strict_types=1);
 
-namespace Comquer\TestVendor\Football;
+namespace Comquer\TestVendor\Football\ReadModel;
 
-use Comquer\TestVendor\Football\ReadModel\GameId;
 use Comquer\WriteModel\Command\Command;
 use Comquer\TestVendor\Football\WriteModel\EndGame\EndGame;
 use Comquer\TestVendor\Football\WriteModel\StartGame\StartGame;
