@@ -1,8 +1,6 @@
 {
     "name": "comquer/comquer",
     "description": "Event Sourced PHP Framework",
-    "version": "dev-master",
-    "minimum-stability": "dev",
     "type": "library",
     "authors": [
         {
