@@ -46,6 +46,9 @@ final class Bootstrap
                 new CommandConfigurationEntry(EndGame::class, EndGameHandler::class),
             ]));
 
+        $container->set(\Comquer\WriteModel\Event\EventStore::class, new \Comquer\TestVendor\Event\Store\EventStore());
+        $container->set(\Comquer\ReadModel\Event\EventStore::class, $container->get(\Comquer\WriteModel\Event\EventStore::class));
+
         return $container;
     }
 }

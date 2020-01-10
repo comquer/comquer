@@ -3,7 +3,6 @@
 namespace Comquer\TestVendor\Football\ReadModel;
 
 use Comquer\ReadModel\Event\EventStoreRepository;
-use Comquer\TestVendor\Football\ReadModel\GameId;
 use Comquer\TestVendor\Football\WriteModel\EndGame\GameEnded;
 use Comquer\TestVendor\Football\WriteModel\StartGame\GameStarted;
 

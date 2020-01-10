@@ -4,9 +4,9 @@ namespace Comquer\ReadModel\Event;
 
 abstract class EventStoreRepository
 {
-    protected EventStore $eventStore;
+    protected \Comquer\WriteModel\Event\EventStore $eventStore;
 
-    public function __construct(EventStore $eventStore)
+    public function __construct(\Comquer\WriteModel\Event\EventStore $eventStore)
     {
         $this->eventStore = $eventStore;
     }

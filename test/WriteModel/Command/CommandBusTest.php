@@ -3,40 +3,32 @@
 namespace Comquer\Test\WriteModel\Command;
 
 use Comquer\WriteModel\Command\CommandBus;
-use Comquer\WriteModel\Command\CommandHandlerProvider;
 use Comquer\Test\ComquerTest;
 use Comquer\TestVendor\Football\ReadModel\GameId;
 use Comquer\TestVendor\Football\WriteModel\StartGame\StartGame;
 use Comquer\TestVendor\Football\WriteModel\StartGame\StartGameException;
+use Comquer\WriteModel\Event\EventStore;
 
 class CommandBusTest extends ComquerTest
 {
     /** @test */
     function handle_start_game_command()
     {
-        $commandHandlerProvider = new CommandHandlerProvider(
-            $this->buildCommandConfiguration(),
-            $this->buildCommandHandlerContainer()
-        );
-
-        $commandBus = new CommandBus($commandHandlerProvider);
+        $commandBus = $this->container->get(CommandBus::class);
 
         $gameId = GameId::generate();
         $commandBus(new StartGame($gameId));
 
-        $gameEvents = $this->eventStore->getByAggregateId($gameId);
+        $eventStore = $this->container->get(EventStore::class);
+        $gameEvents = $eventStore->getByAggregateId($gameId);
+
         self::assertCount(1, $gameEvents);
     }
 
     /** @test */
     function handle_invalid_operation()
     {
-        $commandHandlerProvider = new CommandHandlerProvider(
-            $this->buildCommandConfiguration(),
-            $this->buildCommandHandlerContainer()
-        );
-
-        $commandBus = new CommandBus($commandHandlerProvider);
+        $commandBus = $this->container->get(CommandBus::class);
 
         $gameId = GameId::generate();
         $commandBus(new StartGame($gameId));
