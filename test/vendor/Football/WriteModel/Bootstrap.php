@@ -26,14 +26,15 @@ final class Bootstrap
             new Endpoint('start-game', new class implements RequestHydrator {
                 public function __invoke(Request $request) : Command
                 {
-                    return new StartGame(GameId::generate());
+                    $gameId = new GameId($request->getParameterValue('gameId'));
+                    return new StartGame($gameId);
                 }
             }),
 
             new Endpoint('end-game', new class implements RequestHydrator {
                 public function __invoke(Request $request) : Command
                 {
-                    $gameId = new GameId($request->getParameter('gameId'));
+                    $gameId = new GameId($request->getParameterValue('gameId'));
                     return new EndGame($gameId);
                 }
             }),

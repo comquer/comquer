@@ -19,8 +19,8 @@ class Request
         return $this->route;
     }
 
-    public function getParameter(string $parameterName) : Parameter
+    public function getParameterValue(string $parameterName)
     {
-        return $this->parameters->get($parameterName);
+        return $this->parameters->get($parameterName)->getValue();
     }
 }

@@ -8,7 +8,7 @@ final class Parameter
 
     private string $value;
 
-    private function __construct(string $name, string $value)
+    public function __construct(string $name, $value)
     {
         $this->name = $name;
         $this->value = $value;
