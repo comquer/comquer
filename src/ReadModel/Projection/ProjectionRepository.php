@@ -8,7 +8,7 @@ use Comquer\Validator\ArrayValidator\ArrayValidator;
 
 class ProjectionRepository
 {
-    private DatabaseClient $databaseClient;
+    protected DatabaseClient $databaseClient;
 
     private ProjectionConfiguration $projectionConfiguration;
 
