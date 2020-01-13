@@ -13,22 +13,23 @@ class EventConfiguration extends Collection
     {
         parent::__construct(
             $elements,
-            Type::object(EventConfigurationEntry::class),
-            new UniqueIndex(function (EventConfigurationEntry $configurationEntry) {
-                return (string) $configurationEntry->getEvent();
+            Type::object(ClassName::class),
+            new UniqueIndex(function (ClassName $event) {
+                return (string) $event;
             })
         );
     }
 
     public function getEventClassByName(string $eventName) : ClassName
     {
-        /** @var EventConfigurationEntry $configurationEntry */
+        /** @var ClassName $configurationEntry */
         foreach ($this as $configurationEntry) {
-            $event = (string) $configurationEntry->getEvent();
-            if ($event::getEventName() === $eventName) {
-                return $configurationEntry->getEvent();
+            $serializedEntry = (string) $configurationEntry;
+            if ($serializedEntry::getEventName() === $eventName) {
+                return $configurationEntry;
             }
         }
+
         throw EventConfigurationException::eventNotFoundByName($eventName);
     }
 }

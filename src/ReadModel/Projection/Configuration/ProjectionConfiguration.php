@@ -14,18 +14,18 @@ class ProjectionConfiguration extends Collection
     {
         parent::__construct(
             $elements,
-            Type::object(ClassName::class),
-            new UniqueIndex(function (ClassName $configurationEntry) {
-                return (string) $configurationEntry;
+            Type::object(ProjectionConfigurationEntry::class),
+            new UniqueIndex(function (ProjectionConfigurationEntry $configurationEntry) {
+                return (string) $configurationEntry->getProjection();
             })
         );
     }
 
     public function getProjectionClassByName(string $projectionName) : ClassName
     {
-        /** @var ClassName $configurationEntry */
+        /** @var ProjectionConfigurationEntry $configurationEntry */
         foreach ($this as $configurationEntry) {
-            $serializedEntry = (string) $configurationEntry;
+            $serializedEntry = (string) $configurationEntry->getProjection();
             if ($serializedEntry::getProjectionName() === $projectionName) {
                 return $configurationEntry;
             }

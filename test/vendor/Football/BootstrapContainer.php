@@ -5,9 +5,9 @@ namespace Comquer\TestVendor\Football;
 use Comquer\Persistence\Database\DatabaseClient;
 use Comquer\Persistence\Database\MongoDb\ClientFactory;
 use Comquer\ReadModel\Event\Configuration\EventConfiguration;
-use Comquer\ReadModel\Event\Configuration\EventConfigurationEntry;
 use Comquer\ReadModel\Http\Request;
 use Comquer\ReadModel\Projection\Configuration\ProjectionConfiguration;
+use Comquer\ReadModel\Projection\Configuration\ProjectionConfigurationEntry;
 use Comquer\Reflection\ClassName\ClassName;
 use Comquer\Reflection\ClassName\ClassNameCollection;
 use Comquer\TestVendor\Football\ReadModel\Game;
@@ -58,13 +58,13 @@ final class BootstrapContainer
 
         // Register events
         $container->set(EventConfiguration::class, new EventConfiguration([
-            new EventConfigurationEntry(new ClassName(GameStarted::class), new ClassNameCollection()),
-            new EventConfigurationEntry(new ClassName(GameEnded::class), new ClassNameCollection()),
+            new ClassName(GameStarted::class),
+            new ClassName(GameEnded::class),
         ]));
 
         // Register projections
         $container->set(ProjectionConfiguration::class, new ProjectionConfiguration([
-            new ClassName(Game::class)
+            new ProjectionConfigurationEntry(new ClassName(Game::class), new ClassNameCollection()),
         ]));
 
         $container->set(DatabaseClient::class, ClientFactory::create('localhost', 27017, 'football'));
