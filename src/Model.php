@@ -2,6 +2,7 @@
 
 namespace Comquer;
 
+/** @deprecated */
 final class Model
 {
     private string $model;
