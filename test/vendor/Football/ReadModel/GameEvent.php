@@ -20,6 +20,7 @@ abstract class GameEvent extends Event
     public function serialize() : array
     {
         return [
+            'eventName' => $this::getEventName(),
             'gameId' => (string) $this->getAggregateId(),
             'aggregateId' => (string) $this->getAggregateId(),
             'aggregateType' => (string) $this->getAggregateType(),

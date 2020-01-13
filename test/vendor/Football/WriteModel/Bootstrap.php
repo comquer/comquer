@@ -2,11 +2,19 @@
 
 namespace Comquer\TestVendor\Football\WriteModel;
 
+use Comquer\Persistence\Database\DatabaseClient;
+use Comquer\Persistence\Database\DatabaseClientFactory;
+use Comquer\Persistence\Database\MongoDb\ClientFactory;
+use Comquer\ReadModel\Event\Configuration\EventConfiguration;
+use Comquer\ReadModel\Event\Configuration\EventConfigurationEntry;
 use Comquer\ReadModel\Http\Request;
 use Comquer\Reflection\ClassName\ClassName;
+use Comquer\Reflection\ClassName\ClassNameCollection;
 use Comquer\TestVendor\Football\ReadModel\GameId;
 use Comquer\TestVendor\Football\WriteModel\EndGame\EndGame;
 use Comquer\TestVendor\Football\WriteModel\EndGame\EndGameHandler;
+use Comquer\TestVendor\Football\WriteModel\EndGame\GameEnded;
+use Comquer\TestVendor\Football\WriteModel\StartGame\GameStarted;
 use Comquer\TestVendor\Football\WriteModel\StartGame\StartGame;
 use Comquer\TestVendor\Football\WriteModel\StartGame\StartGameHandler;
 use Comquer\WriteModel\Command\Command;
@@ -42,14 +50,18 @@ final class Bootstrap
         ]));
 
         // Register commands
-        $container
-            ->set(CommandConfiguration::class, new CommandConfiguration([
+        $container->set(CommandConfiguration::class, new CommandConfiguration([
                 new CommandConfigurationEntry(new ClassName(StartGame::class), new ClassName(StartGameHandler::class)),
                 new CommandConfigurationEntry( new ClassName(EndGame::class), new ClassName( EndGameHandler::class)),
             ]));
 
-        $container->set(\Comquer\WriteModel\Event\EventStore::class, new \Comquer\TestVendor\Event\Store\EventStore());
-        $container->set(\Comquer\ReadModel\Event\EventStore::class, $container->get(\Comquer\WriteModel\Event\EventStore::class));
+        // Register events
+        $container->set(EventConfiguration::class, new EventConfiguration([
+            new EventConfigurationEntry(new ClassName(GameStarted::class), new ClassNameCollection()),
+            new EventConfigurationEntry(new ClassName(GameEnded::class), new ClassNameCollection()),
+        ]));
+
+        $container->set(DatabaseClient::class, ClientFactory::create('localhost', 27017, 'football'));
 
         return $container;
     }
