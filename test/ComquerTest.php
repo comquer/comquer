@@ -2,7 +2,7 @@
 
 namespace Comquer\Test;
 
-use Comquer\TestVendor\Football\WriteModel\Bootstrap;
+use Comquer\TestVendor\Football\BootstrapContainer;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface as Container;
 
@@ -12,7 +12,7 @@ abstract class ComquerTest extends TestCase
 
     public function setUp() : void
     {
-        $this->container = (new Bootstrap())();
+        $this->container = (new BootstrapContainer())();
         parent::setUp();
     }
 }

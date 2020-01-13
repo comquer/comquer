@@ -3,53 +3,68 @@
 namespace Comquer\TestVendor\Football\ReadModel;
 
 use Comquer\ReadModel\Projection\Projection;
+use Comquer\Validator\ArrayValidator\ArrayValidator;
 use DateTimeImmutable;
 
-final class Game implements Projection
+final class Game extends Projection
 {
-    private const PROJECTION_NAME = 'game';
+    private const PROJECTION = 'game';
 
     private GameId $gameId;
 
-    private DateTimeImmutable $startTime;
-
     private string $status;
 
-    private DateTimeImmutable $updatedAt;
+    private DateTimeImmutable $startedAt;
 
-    public function __construct(GameId $gameId, DateTimeImmutable $startTime, string $status, DateTimeImmutable $updatedAt)
+    public function __construct(GameId $gameId, string $status, DateTimeImmutable $startedAt, DateTimeImmutable $lastUpdatedAt)
     {
         $this->gameId = $gameId;
-        $this->startTime = $startTime;
+        $this->startedAt = $startedAt;
         $this->status = $status;
-        $this->updatedAt = $updatedAt;
+        parent::__construct(self::PROJECTION, $gameId, $lastUpdatedAt);
     }
 
     public static function deserialize(array $serialized) : self
     {
-        return new self();
-    }
+        self::validateSerialized($serialized);
 
-    public function getProjectionId() : GameId
-    {
-        return $this->gameId;
+        return new self(
+            new GameId($serialized['gameId']),
+            $serialized['status'],
+            (new DateTimeImmutable())->setTimestamp($serialized['startedAt']),
+            (new DateTimeImmutable())->setTimestamp($serialized['lastUpdatedAt']),
+        );
     }
 
     public static function getProjectionName() : string
     {
-        return self::PROJECTION_NAME;
-    }
-
-    public function getUpdatedAt() : DateTimeImmutable
-    {
-        return $this->updatedAt;
+        return self::PROJECTION;
     }
 
     public function serialize() : array
     {
         return [
+            'projectionName' => $this::getProjectionName(),
+            'projectionId' => (string) $this->getProjectionId(),
             'gameId' => (string) $this->gameId,
-            ''
+            'status' => $this->status,
+            'startedAt' => $this->startedAt->getTimestamp(),
+            'lastUpdatedAt' => $this->getLastUpdatedAt()->getTimestamp(),
         ];
+    }
+
+    private static function validateSerialized(array $serialized) : void
+    {
+        ArrayValidator::validateMultipleKeysExist(
+            [
+                'projectionName',
+                'projectionId',
+                'gameId',
+                'status',
+                'startedAt',
+                'lastUpdatedAt'
+            ],
+            $serialized
+        );
     }
 }
