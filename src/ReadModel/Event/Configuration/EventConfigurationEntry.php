@@ -16,4 +16,14 @@ class EventConfigurationEntry
         $this->event = $event;
         $this->projections = $projections;
     }
+
+    public function getEvent() : ClassName
+    {
+        return $this->event;
+    }
+
+    public function getProjections() : ClassNameCollection
+    {
+        return $this->projections;
+    }
 }
