@@ -16,7 +16,7 @@ class ProjectionConfiguration extends Collection
             $elements,
             Type::object(ClassName::class),
             new UniqueIndex(function (ClassName $configurationEntry) {
-                return (string) $configurationEntry->getEvent();
+                return (string) $configurationEntry;
             })
         );
     }
