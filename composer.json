@@ -23,7 +23,9 @@
         "comquer/collection": "dev-master",
         "psr/container": "^1.0@dev",
         "psr/http-message": "dev-master",
-        "php-di/php-di": "dev-master"
+        "php-di/php-di": "dev-master",
+        "comquer/persistence": "dev-master",
+        "comquer/reflection": "dev-master"
     },
     "require-dev": {
         "phpunit/phpunit": "^8.0",

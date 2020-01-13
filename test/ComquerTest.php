@@ -8,7 +8,6 @@ use Comquer\WriteModel\Event\EventStore;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface as Container;
 
-
 abstract class ComquerTest extends TestCase
 {
     protected Container $container;

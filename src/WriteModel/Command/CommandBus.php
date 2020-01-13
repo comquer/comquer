@@ -14,6 +14,7 @@ final class CommandBus
     public function __invoke(Command $command) : void
     {
         $commandHandler = ($this->commandHandlerProvider)($command);
+
         $commandHandler($command);
     }
 }
