@@ -4,7 +4,7 @@ namespace Comquer\TestVendor\Football\WriteModel;
 
 use Comquer\TestVendor\Football\ReadModel\GameRepository;
 use Comquer\WriteModel\Command\CommandHandler;
-use Comquer\TestVendor\Event\EventDispatcher;
+use Comquer\WriteModel\Event\EventDispatcher;
 
 abstract class GameCommandHandler extends CommandHandler
 {

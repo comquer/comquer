@@ -4,6 +4,9 @@ namespace Comquer\TestVendor\Football;
 
 use Comquer\Persistence\Database\DatabaseClient;
 use Comquer\Persistence\Database\MongoDb\ClientFactory;
+use Comquer\Persistence\Queue\QueuePublisher;
+use Comquer\Persistence\Queue\RabbitMq\ConnectionFactory;
+use Comquer\Persistence\Queue\RabbitMq\Publisher;
 use Comquer\ReadModel\Event\Configuration\EventConfiguration;
 use Comquer\ReadModel\Http\Request;
 use Comquer\ReadModel\Projection\Configuration\ProjectionConfiguration;
@@ -68,6 +71,9 @@ final class BootstrapContainer
         ]));
 
         $container->set(DatabaseClient::class, ClientFactory::create('localhost', 27017, 'football'));
+
+        $connection = ConnectionFactory::create('localhost', 5672, 'guest', 'guest');
+        $container->set(QueuePublisher::class, new Publisher($connection));
 
         return $container;
     }
