@@ -7,18 +7,21 @@ use Comquer\ReadModel\Projection\Configuration\ProjectionConfiguration;
 
 class EventQueueConsumer
 {
-    private QueueConsumer $consumer;
+    private QueueConsumer $queueConsumer;
 
     private ProjectionConfiguration $projectionConfiguration;
 
-    public function __construct(QueueConsumer $consumer, ProjectionConfiguration $projectionConfiguration)
+    public function __construct(QueueConsumer $queueConsumer, ProjectionConfiguration $projectionConfiguration)
     {
-        $this->consumer = $consumer;
+        $this->queueConsumer = $queueConsumer;
         $this->projectionConfiguration = $projectionConfiguration;
     }
 
     public function __invoke() : void
     {
-        foreach ()
+        ($this->queueConsumer)('events', function (array $event) {
+            
+            $this->projectionConfiguration->getProjectionsByEventName();
+        });
     }
 }

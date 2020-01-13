@@ -6,7 +6,9 @@ use Comquer\Collection\Collection;
 use Comquer\Collection\Type;
 use Comquer\Collection\UniqueIndex;
 use Comquer\ReadModel\Event\Configuration\ProjectionConfigurationException;
+use Comquer\ReadModel\Event\Event;
 use Comquer\Reflection\ClassName\ClassName;
+use Comquer\Reflection\ClassName\ClassNameCollection;
 
 class ProjectionConfiguration extends Collection
 {
