@@ -2,24 +2,26 @@
 
 namespace Comquer\ReadModel\Query\Configuration;
 
+use Comquer\Reflection\ClassName\ClassName;
+
 class QueryConfigurationEntry
 {
-    private string $query;
+    private ClassName $query;
 
-    private string $queryHandler;
+    private ClassName $queryHandler;
 
-    public function __construct(string $query, string $queryHandler)
+    public function __construct(ClassName $query, ClassName $queryHandler)
     {
         $this->query = $query;
         $this->queryHandler = $queryHandler;
     }
 
-    public function getQuery() : string
+    public function getQuery() : ClassName
     {
         return $this->query;
     }
 
-    public function getQueryHandler() : string
+    public function getQueryHandler() : ClassName
     {
         return $this->queryHandler;
     }
