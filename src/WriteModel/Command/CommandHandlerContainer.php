@@ -2,6 +2,7 @@
 
 namespace Comquer\WriteModel\Command;
 
+use Comquer\Reflection\ClassName\ClassName;
 use Psr\Container\ContainerInterface;
 
 final class CommandHandlerContainer
@@ -13,8 +14,8 @@ final class CommandHandlerContainer
         $this->container = $container;
     }
 
-    public function __invoke(string $class) : CommandHandler
+    public function __invoke(ClassName $className) : CommandHandler
     {
-        return $this->container->get($class);
+        return $this->container->get((string) $className);
     }
 }

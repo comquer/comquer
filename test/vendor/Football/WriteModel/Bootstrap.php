@@ -3,6 +3,7 @@
 namespace Comquer\TestVendor\Football\WriteModel;
 
 use Comquer\ReadModel\Http\Request;
+use Comquer\Reflection\ClassName\ClassName;
 use Comquer\TestVendor\Football\ReadModel\GameId;
 use Comquer\TestVendor\Football\WriteModel\EndGame\EndGame;
 use Comquer\TestVendor\Football\WriteModel\EndGame\EndGameHandler;
@@ -43,8 +44,8 @@ final class Bootstrap
         // Register commands
         $container
             ->set(CommandConfiguration::class, new CommandConfiguration([
-                new CommandConfigurationEntry(StartGame::class, StartGameHandler::class),
-                new CommandConfigurationEntry(EndGame::class, EndGameHandler::class),
+                new CommandConfigurationEntry(new ClassName(StartGame::class), new ClassName(StartGameHandler::class)),
+                new CommandConfigurationEntry( new ClassName(EndGame::class), new ClassName( EndGameHandler::class)),
             ]));
 
         $container->set(\Comquer\WriteModel\Event\EventStore::class, new \Comquer\TestVendor\Event\Store\EventStore());
