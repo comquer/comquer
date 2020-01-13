@@ -3,7 +3,6 @@
 namespace Comquer\TestVendor\Football\WriteModel;
 
 use Comquer\Persistence\Database\DatabaseClient;
-use Comquer\Persistence\Database\DatabaseClientFactory;
 use Comquer\Persistence\Database\MongoDb\ClientFactory;
 use Comquer\ReadModel\Event\Configuration\EventConfiguration;
 use Comquer\ReadModel\Event\Configuration\EventConfigurationEntry;
@@ -52,7 +51,7 @@ final class Bootstrap
         // Register commands
         $container->set(CommandConfiguration::class, new CommandConfiguration([
                 new CommandConfigurationEntry(new ClassName(StartGame::class), new ClassName(StartGameHandler::class)),
-                new CommandConfigurationEntry( new ClassName(EndGame::class), new ClassName( EndGameHandler::class)),
+                new CommandConfigurationEntry(new ClassName(EndGame::class), new ClassName(EndGameHandler::class)),
             ]));
 
         // Register events

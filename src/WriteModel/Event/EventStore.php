@@ -8,6 +8,6 @@ class EventStore extends \Comquer\ReadModel\Event\EventStore
 {
     public function persist(Event $event) : void
     {
-        $this->client->persist(self::COLLECTION, $event->serialize());
+        $this->databaseClient->persist(self::COLLECTION, $event->serialize());
     }
 }

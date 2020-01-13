@@ -10,20 +10,20 @@ class EventStore
 {
     protected const COLLECTION = 'events';
 
-    protected DatabaseClient $client;
+    protected DatabaseClient $databaseClient;
 
-    private EventConfiguration $configuration;
+    private EventConfiguration $eventConfiguration;
 
-    public function __construct(DatabaseClient $client, EventConfiguration $configuration)
+    public function __construct(DatabaseClient $databaseClient, EventConfiguration $eventConfiguration)
     {
-        $this->client = $client;
-        $this->configuration = $configuration;
+        $this->databaseClient = $databaseClient;
+        $this->eventConfiguration = $eventConfiguration;
     }
 
     public function getByQuery(array $query) : EventCollection
     {
         return $this->deserialize(
-            $this->client->getByQuery(self::COLLECTION, $query)
+            $this->databaseClient->getByQuery(self::COLLECTION, $query)
         );
     }
 
@@ -47,7 +47,7 @@ class EventStore
 
         foreach ($documents as $document) {
             ArrayValidator::validateSingleKeyExists('eventName', $document);
-            $eventClassName = (string) $this->configuration->getEventClassByName($document['eventName']);
+            $eventClassName = (string) $this->eventConfiguration->getEventClassByName($document['eventName']);
             $events->add($eventClassName::deserialize($document));
         }
 

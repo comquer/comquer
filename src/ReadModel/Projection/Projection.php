@@ -6,11 +6,30 @@ use Comquer\ReadModel\Serialization\Deserializable;
 use Comquer\ReadModel\Serialization\Serializable;
 use DateTimeImmutable;
 
-interface Projection extends Serializable, Deserializable
+abstract class Projection implements Serializable, Deserializable
 {
-    public function getProjectionId() : ProjectionId;
+    private string $projectionName;
 
-    public static function getProjectionName() :  string;
+    private ProjectionId $projectionId;
 
-    public function getUpdatedAt() : DateTimeImmutable;
+    private DateTimeImmutable $lastUpdatedAt;
+
+    public function __construct(string $projectionName, ProjectionId $projectionId, DateTimeImmutable $lastUpdatedAt)
+    {
+        $this->projectionName = $projectionName;
+        $this->projectionId = $projectionId;
+        $this->lastUpdatedAt = $lastUpdatedAt;
+    }
+
+    abstract public static function getProjectionName() :  string;
+
+    public function getProjectionId() : ProjectionId
+    {
+        return $this->projectionId;
+    }
+
+    public function getLastUpdatedAt() : DateTimeImmutable
+    {
+        return $this->lastUpdatedAt;
+    }
 }
