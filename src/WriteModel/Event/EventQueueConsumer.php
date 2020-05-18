@@ -20,7 +20,6 @@ class EventQueueConsumer
     public function __invoke() : void
     {
         ($this->queueConsumer)('events', function (array $event) {
-            
             $this->projectionConfiguration->getProjectionsByEventName();
         });
     }

@@ -6,7 +6,7 @@ use Comquer\ReadModel\Http\Request;
 use Comquer\WriteModel\Command\CommandBus;
 use Throwable;
 
-class Controller
+class HttpController
 {
     private CommandFactory $commandFactory;
 

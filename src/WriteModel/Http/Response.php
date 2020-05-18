@@ -24,6 +24,6 @@ class Response
 
     public static function fromCommand(Command $command) : self
     {
-        return new self(200, get_class($command));
+        return new self(201, get_class($command));
     }
 }

@@ -21,7 +21,7 @@ abstract class Projection implements Serializable, Deserializable
         $this->lastUpdatedAt = $lastUpdatedAt;
     }
 
-    abstract public static function getProjectionName() :  string;
+    abstract public static function getProjectionName() : string;
 
     public function getProjectionId() : ProjectionId
     {
